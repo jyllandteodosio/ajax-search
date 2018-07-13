@@ -22,11 +22,11 @@
             
             ?>
 
-                <article <?php echo post_class(); ?>>
-                    <div class="article-wrap <?php if($count % 2){echo 'even';}; ?>">
+                <article class="<?php $allClasses = get_post_class(); foreach ($allClasses as $class) { echo $class . " "; } ?> <?php if($count % 2){echo 'even';}; ?>" id="post-<?php the_ID(); ?>">
+                    <div class="article-wrap">
                     
                     <div class="featured-image">
-                        <a href="<?php the_permalink(); ?>" class="image-wrap">
+                        <div class="image-wrap">
                             <?php  if(has_post_thumbnail()){
                             $thumb_id = get_post_thumbnail_id(); $thumb_url = wp_get_attachment_image_src($thumb_id,'featured-image', true); $alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);?>
 
@@ -37,19 +37,52 @@
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default-bg.png" alt="<?php if(strLen($alt)>0){echo $alt;}else{the_title();} ?>"/>
                             <?php
                             }?>
-                        </a>
+                        </div>
                     </div>
                     
                     
                     <div class="detail-wrap">
                         <div class="entry-content">
-                            <h2><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h2>
-                            <?php if (!has_excerpt()){ the_advanced_excerpt(); } else { echo '<p>'; echo the_excerpt(); echo '<a href="' . get_the_permalink() . '"class="read-more">Read More</a>'; echo '</p>'; }?>
+                            <h2><?php echo the_title(); ?></h2>
+                            <?php if (!has_excerpt()){ the_advanced_excerpt(); echo '<a href="#modal-' . get_the_ID() . '"class="read-more" data-toggle="modal" data-target="#modal-' . get_the_ID() . '">Read More <i class="fas fa-angle-double-right"></i></a>'; } else { echo '<p>'; echo the_excerpt(); echo '<a href="' . get_the_permalink() . '"class="read-more">Read More <i class="fas fa-angle-double-right"></i></a>'; echo '</p>'; }?>
                         </div>
                     </div>
                         
                     </div>
                 </article>
+    
+    
+                <!-- Modal HTML -->
+                <div id="modal-<?php echo the_ID(); ?>" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="close" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i></div>
+                            <div class="modal-image">
+                                <div class="featured-image-modal">
+                                    <div class="image-wrap">
+                                        <?php  if(has_post_thumbnail()){
+                                        $thumb_id = get_post_thumbnail_id(); $thumb_url = wp_get_attachment_image_src($thumb_id,'featured-image', true); $alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);?>
+
+                                            <img src="<?php echo $thumb_url[0]; ?>" alt="<?php if(strLen($alt)>0){echo $alt;}else{the_title();} ?>"/>
+
+                                        <?php } else {
+                                            ?>
+                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default-bg.png" alt="<?php if(strLen($alt)>0){echo $alt;}else{the_title();} ?>"/>
+                                        <?php
+                                        }?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <h2><?php echo the_title(); ?></h2>
+                                <?php echo the_content(); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                
 
 
                 <?php $count++; endwhile; ?>
