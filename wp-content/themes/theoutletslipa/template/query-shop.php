@@ -4,7 +4,7 @@
         <div class="section-filter filter-shop">
             <div class="search-container">
                 <input type="submit" value="&#xf002"/>
-                <input type="search" placeholder="Search Shop"/>
+                <input type="search" placeholder="Search Shop" class="filter-shop-input" data-type="shops"/>
             </div>
             <div class="select-category">
                 <select>
@@ -23,16 +23,21 @@
             </div>
         </div>
     
+    
+        <div class="shop-results">
+        </div>
+    
 
-            <?php $query = new WP_Query(array(
+            <?php 
+                /*
+                $query = new WP_Query(array(
                     'orderby'           => 'title', 
-                    'posts_per_page'    => 10,
+                    'posts_per_page'    => 1,
                     'post_type'         => 'outlets',
                     'tax_query'      => array(
                         array(
                             'taxonomy' => 'outlet_category',
                             'field' => 'slug',
-                            
                             'terms' => array ('food-drink'),
                             'operator' => 'NOT IN'
                         )
@@ -102,7 +107,7 @@
                 <?php wp_reset_postdata(); global $initialoffset; $initialoffset = $query->found_posts; ?>
 
 
-                <?php endif; ?>          
+                <?php endif; */?>          
             
     
     
