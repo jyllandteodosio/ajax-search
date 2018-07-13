@@ -6,10 +6,10 @@
                     <input type="submit" value="&#xf002"/>
                     <input type="search" placeholder="Search Restaurant"/>
                 </div>
-                <div class="layout-change layout-thumb">
+                <div class="layout-change style-thumb">
                     <i class="fas fa-th-large"></i>
                 </div>
-                <div class="layout-change layout-list">
+                <div class="layout-change style-list">
                     <i class="fas fa-bars"></i>
                 </div>
             </div>
@@ -35,12 +35,11 @@
                 
             
             ?>
-
-                <article <?php echo post_class(); ?>>
-                    <div class="article-wrap <?php if($count % 2){echo 'even';}; ?>">
+                <article class="<?php $allClasses = get_post_class(); foreach ($allClasses as $class) { echo $class . " "; } ?> <?php if($count % 2){echo 'even';}; ?>" id="post-<?php the_ID(); ?>">
+                    <div class="article-wrap ">
                     
                     <div class="featured-image">
-                        <a href="<?php the_permalink(); ?>" class="image-wrap">
+                        <div class="image-wrap">
                             <?php  if(has_post_thumbnail()){
                             $thumb_id = get_post_thumbnail_id(); $thumb_url = wp_get_attachment_image_src($thumb_id,'featured-image', true); $alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);?>
 
@@ -48,10 +47,12 @@
 
                             <?php } else {
                                 ?>
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default-bg.png" alt="<?php if(strLen($alt)>0){echo $alt;}else{the_title();} ?>"/>
+                                
+                                <div class="featured-name"><div class="store-name"><?php echo the_title(); ?></div></div>
+                            
                             <?php
                             }?>
-                        </a>
+                        </div>
                     </div>
                     
                     

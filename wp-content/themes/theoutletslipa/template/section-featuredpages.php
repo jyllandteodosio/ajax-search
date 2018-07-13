@@ -11,7 +11,7 @@
                             <span class="tag"><?php echo get_sub_field('tag'); ?></span>
                             <h2 class="page-title"><?php echo get_sub_field('title'); ?></h2>
                             <?php if(get_sub_field('link_text')) { ?>
-                                <span class="link"><?php echo get_sub_field('link_text'); ?></span>
+                                <span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span>
                             <?php } ?>
                         </div>
                     </a>
@@ -36,7 +36,7 @@
                             <span class="tag"><?php echo get_sub_field('tag'); ?></span>
                             <h2 class="page-title"><?php echo get_sub_field('title'); ?></h2>
                             <?php if(get_sub_field('link_text')) { ?>
-                                <span class="link"><?php echo get_sub_field('link_text'); ?></span>
+                                <span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span>
                             <?php } ?>
                         </div>
                     </a>
@@ -61,7 +61,7 @@
                             <span class="tag"><?php echo get_sub_field('tag'); ?></span>
                             <h2 class="page-title"><?php echo get_sub_field('title'); ?></h2>
                             <?php if(get_sub_field('link_text')) { ?>
-                                <span class="link"><?php echo get_sub_field('link_text'); ?></span>
+                                <span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span>
                             <?php } ?>
                         </div>
                     </a>

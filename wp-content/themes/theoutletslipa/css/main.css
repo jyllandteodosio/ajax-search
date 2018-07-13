@@ -942,7 +942,7 @@ img.alignright,
 
 .site-header > .wrap {
   max-width: 100%;
-  padding: 0 50px; }
+  padding: 0 0 0 50px; }
 
 /* ## Title Area
 --------------------------------------------- */
@@ -1001,7 +1001,7 @@ img.alignright,
 .site-header .widget-area {
   float: right;
   text-align: right;
-  width: 800px; }
+  width: 900px; }
 
 /* # Site Navigation
 ---------------------------------------------------------------------------------------------------- */
@@ -1033,6 +1033,19 @@ img.alignright,
 .genesis-nav-menu .sub-menu .current-menu-item > a:focus,
 .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
   border-bottom: 4px solid #e8050b; }
+
+.search-button {
+  padding-left: 30px;
+  padding-right: 30px;
+  border-left: 1px solid #eaeaea;
+  margin-left: 20px; }
+  .search-button i {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-size: 24px;
+    color: #e8131a; }
+  .search-button:hover {
+    border-bottom: 4px solid transparent; }
 
 .genesis-nav-menu .sub-menu {
   border-top: 1px solid #eee;
@@ -1294,8 +1307,14 @@ p.entry-meta {
     width: 33.3333333333%;
     margin: 0;
     border-right: 1px solid #fff; }
+    .section-featured-pages .one-third .swiper-container .swiper-slide .tag:before {
+      background: #f9af40; }
+    .section-featured-pages .one-third:nth-child(2) .swiper-container .swiper-slide .tag:before {
+      background: #39b24a; }
     .section-featured-pages .one-third:last-child {
       border-right: 0; }
+      .section-featured-pages .one-third:last-child .swiper-container .swiper-slide .tag:before {
+        background: #ee5a29; }
   .section-featured-pages .swiper-container {
     height: 500px; }
     .section-featured-pages .swiper-container .swiper-slide {
@@ -1327,7 +1346,15 @@ p.entry-meta {
           margin-top: -10px; }
       .section-featured-pages .swiper-container .swiper-slide .link {
         text-align: right;
-        float: right; }
+        float: right;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 800;
+        margin-bottom: -20px; }
+        .section-featured-pages .swiper-container .swiper-slide .link i {
+          font-family: 'FontAwesome';
+          font-style: normal;
+          margin-left: 10px; }
     .section-featured-pages .swiper-container .swiper-pagination {
       text-align: left;
       padding-left: 35px;
@@ -1463,7 +1490,11 @@ p.entry-meta {
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
-    padding: 10px 0; }
+    padding: 10px 0;
+    border-right: 1px solid #e8050b; }
+    .content-tabs .tabs .tab-link:last-child {
+      border-left: 1px solid #e8050b;
+      border-right: 2px solid #ccc; }
     .content-tabs .tabs .tab-link.active {
       border: 2px solid #e8050b;
       color: #e8050b; }
@@ -1499,6 +1530,19 @@ p.entry-meta {
   width: 810px;
   float: left;
   padding: 0; }
+
+.page-template-page_pitch a {
+  display: inline-block;
+  color: #333;
+  font-weight: 600; }
+.page-template-page_pitch i {
+  font-family: 'FontAwesome';
+  font-size: 18px;
+  color: #555;
+  display: inline-block;
+  font-style: normal;
+  margin-right: 10px;
+  color: #e8050b; }
 
 .content-sidebar-content {
   width: 810px;
@@ -1640,7 +1684,8 @@ p.entry-meta {
       .booking_form_div .wpbc_structure_form .second-column-form select {
         box-sizing: border-box;
         width: 100% !important;
-        border: 0; }
+        border: 0;
+        padding-right: 15px; }
       .booking_form_div .wpbc_structure_form .second-column-form .form-group {
         display: inline-block;
         width: 100%;
@@ -1649,7 +1694,19 @@ p.entry-meta {
         .booking_form_div .wpbc_structure_form .second-column-form .form-group label, .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
           display: inline-block; }
         .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
-          float: right; }
+          float: right;
+          position: relative; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls:after {
+            content: "\f107";
+            font-family: FontAwesome;
+            color: #777;
+            position: absolute;
+            right: 0;
+            top: 2px;
+            z-index: 1;
+            text-align: center;
+            pointer-events: none;
+            box-sizing: border-box; }
       .booking_form_div .wpbc_structure_form .second-column-form .addon-title {
         font-size: 16px;
         font-weight: 500;
@@ -1683,6 +1740,20 @@ p.entry-meta {
           .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button:hover, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button:hover {
             background: #e8050b;
             color: #fff; }
+      .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls {
+        position: relative; }
+        .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls:after {
+          content: "\f107";
+          font-family: FontAwesome;
+          color: #777;
+          right: 16px;
+          top: 12px;
+          position: absolute;
+          z-index: 1;
+          text-align: center;
+          pointer-events: none;
+          box-sizing: border-box;
+          background: #fff; }
       .booking_form_div .wpbc_structure_form .third-column-form input, .booking_form_div .wpbc_structure_form .third-column-form select {
         box-sizing: border-box; }
     .booking_form_div .wpbc_structure_form p {
@@ -1699,13 +1770,19 @@ p.entry-meta {
   width: 50%;
   display: inline-block;
   float: left;
-  padding: 0 15px;
+  padding-right: 15px;
   height: 240px; }
+  .section-query article.even {
+    padding-left: 15px;
+    padding-right: 0; }
   .section-query article .article-wrap {
     border: 1px solid #ccc;
     background: #d6d6d6;
     display: inline-block;
-    width: 100%; }
+    width: 100%;
+    position: relative;
+    height: 240px;
+    overflow: hidden; }
   .section-query article .featured-image {
     width: 50%;
     display: inline-block;
@@ -1716,7 +1793,7 @@ p.entry-meta {
   .section-query article .detail-wrap {
     width: 50%;
     display: inline-block;
-    float: left;
+    float: right;
     padding-top: 40px; }
     .section-query article .detail-wrap i {
       font-family: 'FontAwesome';
@@ -1732,8 +1809,32 @@ p.entry-meta {
     .section-query article .detail-wrap ul li {
       list-style-type: none;
       line-height: 26px; }
+  .section-query article .featured-name {
+    height: 100%;
+    position: absolute;
+    width: 50%;
+    left: 0;
+    background: #fff;
+    display: table-cell;
+    vertical-align: middle; }
+    .section-query article .featured-name .store-name {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 35%;
+      bottom: 0;
+      text-transform: uppercase;
+      font-size: 24px;
+      line-height: 26px;
+      padding: 0 30px; }
+.section-query.layout-list article {
+  width: 100%;
+  padding: 0; }
+  .section-query.layout-list article.even {
+    padding: 0; }
 .section-query.query-promos .article-wrap {
-  background: #fff; }
+  background: #fff;
+  height: auto; }
 .section-query.query-promos .featured-image {
   width: 50%;
   display: inline-block;
@@ -1746,8 +1847,8 @@ p.entry-meta {
     width: 100%;
     height: 100%;
     display: block; }
-  .section-query.query-promos .featured-image img {
-    height: 100%; }
+.section-query.query-promos .image-wrap {
+  height: 100%; }
 .section-query.query-promos .detail-wrap {
   padding: 30px 30px; }
   .section-query.query-promos .detail-wrap h2 {
@@ -1761,6 +1862,42 @@ p.entry-meta {
     color: #e8050b;
     font-weight: 700;
     margin-top: 20px; }
+.section-query.query-promos .read-more i {
+  font-size: 14px;
+  margin-left: 5px; }
+.section-query.query-promos .modal .close {
+  position: absolute;
+  color: #fff;
+  font-family: 'FontAwesome';
+  top: -40px;
+  right: 0;
+  font-style: normal;
+  opacity: 1;
+  font-size: 30px; }
+  .section-query.query-promos .modal .close i {
+    font-style: normal; }
+.section-query.query-promos .modal-image {
+  width: 60%;
+  height: 100%;
+  position: absolute; }
+  .section-query.query-promos .modal-image .featured-image-modal {
+    width: 100%;
+    height: 100%;
+    position: relative; }
+    .section-query.query-promos .modal-image .featured-image-modal img {
+      top: 0 !important;
+      width: 100% !important;
+      left: 0 !important; }
+.section-query.query-promos .modal-body {
+  width: 40%;
+  float: right;
+  padding: 40px; }
+  .section-query.query-promos .modal-body h2 {
+    font-size: 24px;
+    line-height: 30px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 40px; }
 
 .section-filter {
   width: 100%;
@@ -1790,7 +1927,8 @@ p.entry-meta {
       color: #777;
       font-family: 'FontAwesome'; }
   .section-filter .select-category {
-    float: left; }
+    float: left;
+    position: relative; }
     .section-filter .select-category select {
       height: 60px;
       width: 250px;
@@ -1802,6 +1940,18 @@ p.entry-meta {
       border-left: 0; }
       .section-filter .select-category select:focus {
         outline: 0; }
+    .section-filter .select-category:after {
+      content: "\f107";
+      font-family: FontAwesome;
+      color: #777;
+      right: 21px;
+      top: 19px;
+      position: absolute;
+      z-index: 1;
+      text-align: center;
+      pointer-events: none;
+      box-sizing: border-box;
+      background: #fff; }
   .section-filter .layout-change {
     width: 60px;
     height: 60px;
@@ -1881,7 +2031,6 @@ p.entry-meta {
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
 @media only screen and (max-width: 1340px) {
-  .site-inner,
   .wrap {
     max-width: 1140px; }
 
@@ -1910,7 +2059,6 @@ p.entry-meta {
   .footer-widgets-1 {
     margin-right: 60px; } }
 @media only screen and (max-width: 1200px) {
-  .site-inner,
   .wrap {
     max-width: 960px; }
 
@@ -1936,7 +2084,6 @@ p.entry-meta {
   .footer-widgets-1 {
     margin-right: 30px; } }
 @media only screen and (max-width: 1023px) {
-  .site-inner,
   .wrap {
     max-width: 800px; }
 
@@ -2098,9 +2245,6 @@ p.entry-meta {
   body > div {
     font-size: 18px;
     font-size: 1.8rem; }
-
-  .site-inner {
-    padding: 5% 5% 0; }
 
   .wrap {
     padding-left: 5%;

@@ -17,28 +17,11 @@ jQuery(function($){
         $(this).addClass('active').siblings().removeClass('active');
         $('#tab-'+tabID).addClass('active').siblings().removeClass('active');
     });
-    
-    
-//      $(".set > a").on("click", function() {
-//        if ($(this).hasClass("active")) {
-//          $(this).removeClass("active");
-//          $(this).siblings(".content").slideUp(200);
-//          $(".set > a i").removeClass("fa-angle-up").addClass("fa-angle-down");
-//        } else {
-//          $(".set > a i").removeClass("fa-angle-up").addClass("fa-angle-down");
-//          $(this).find("i").removeClass("fa-angle-down").addClass("fa-angle-up");
-//          $(".set > a").removeClass("active");
-//          $(this).addClass("active");
-//          $(".content").slideUp(200);
-//          $(this).siblings(".content").slideDown(200);
-//        }
-//      });
-    
 
     
-      var allPanels = $('.accordion-wrap > .content').hide();
-      $('.accordion-wrap > .content.active').slideDown();
-      $('.accordion-wrap > .title > a').click(function() {
+    var allPanels = $('.accordion-wrap > .content').hide();
+    $('.accordion-wrap > .content.active').slideDown();
+    $('.accordion-wrap > .title > a').click(function() {
           $this = $(this);
           $target =  $this.parent().next();
 
@@ -48,7 +31,7 @@ jQuery(function($){
           }
 
         return false;
-      });
+    });
        
     $('.wpbc_structure_form .form-group:nth-child(-n+4)').wrapAll('<div class="first-column-form"></div>');
     $('.wpbc_structure_form > .form-group:nth-child(-n+8)').wrapAll('<div class="second-column-form"></div>'); 
@@ -56,5 +39,23 @@ jQuery(function($){
     $('.wpbc_structure_calendar').detach().insertAfter(".first-column-form");
     $('.second-column-form').prepend('<span class="addon-title">Add-ons:</span>');
     $('.wpbc_structure_form').append('<p>Submission of this form does not guarantee your booking. Please wait for notification via email or mobile for confirmation.</p>');
+    
+    
+    $('.layout-change').on('click', function(){
+        if($(this).hasClass('style-list')) {
+            $(this).parents('.section-query').removeClass('layout-thumb').addClass('layout-list');
+            console.log('list');
+        } else if($(this).hasClass('style-thumb')){
+            $(this).parents('.section-query').removeClass('layout-list').addClass('layout-thumb');
+        }
+    });
+    
+    
+    $('.query-promos .image-wrap img').centerImage();
+    $('.featured-image-modal img').centerImage();
+    
+    
+    var modalBody = $('.modal-body').height();
+//    $('.modal-image').css('height', modalBody);
     
 });
