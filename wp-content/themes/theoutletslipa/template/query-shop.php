@@ -77,9 +77,13 @@
                                 <li><i class="fas fa-tag"></i>
                                 <?php  
                                     $custom_taxonomy = the_terms( $post->ID, 'outlet_category');
-                                    foreach ( $custom_taxonomy as $term ) {
-                                      echo $term->name;
+                                    
+                                    if( $custom_taxonomy ) {
+                                        foreach ( $custom_taxonomy as $term ) {
+                                          echo $term->name;
+                                        }
                                     }
+                                    
                                 ?>
                                 </li>
                             </ul>
