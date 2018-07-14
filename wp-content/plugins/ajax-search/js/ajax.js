@@ -16,6 +16,14 @@ jQuery(function($){
     
     var base_url = location.hostname !== 'localhost' ? location.hostname : 'http://localhost/theoutletslipa';
     
+    // Initial Load
+    var search_term = '';
+    var category = $('.select-category select').val() ? $('.select-category select').val() : '';
+    var page = '';
+    var type = $('.filter-shop-input').data('type');
+    
+    get_shops(search_term, category, page, type);
+    
     // On input of first 3 characters or when Enter is pressed
     $('.filter-shop-input').keyup(debounce(function(e) {
         var search_term = $(this).val();
@@ -24,8 +32,8 @@ jQuery(function($){
         var type = $(this).data('type');
         
         if( search_term.length > 2 || e.which == 13 ) {
-            console.log('Searched for: ' + search_term);
-            console.log('Category: ' + category);
+//            console.log('Searched for: ' + search_term);
+//            console.log('Category: ' + category);
             
             get_shops(search_term, category, page, type);
         }
@@ -38,8 +46,8 @@ jQuery(function($){
         var page = '';
         var type = $('.filter-shop-input').data('type');
         
-        console.log('Searched for: ' + search_term);
-        console.log('Category: ' + category);
+//        console.log('Searched for: ' + search_term);
+//        console.log('Category: ' + category);
 
         get_shops(search_term, category, page, type);
     });
@@ -57,10 +65,16 @@ jQuery(function($){
             method: 'GET',
             url: base_url + '/wp-json/ajax-search/v1/shops',
             data: params,
+            beforeSend: function loader() {
+                $('.layout-thumb .shop-results').text('');
+                $('.layout-thumb .shop-results').append('<div class="loader">Loading...</div>');
+            },
             success: function(data, textStatus, jqXHR) {
-                console.log(data);
+                $('.layout-thumb .shop-results').text('');
+//                console.log(data);
 
                 if(data.shops.length > 0) {
+                    
                     $.each(data.shops, function(key, value) {
                         
                         if(value.thumb_url) {
@@ -75,8 +89,8 @@ jQuery(function($){
                         
                         if(value.tags.length > 0) {
                             var tags = '';
-                            $.each(value.tags, function(name, link) {
-                                tags += '<a href="'+link+'" rel="tag">'+name+'</a> ';
+                            $.each(value.tags, function(index, tag) {
+                                tags += '<a href="'+tag.link+'" rel="tag">'+tag.name+'</a> ';
                             });
                         }
                         
@@ -105,7 +119,6 @@ jQuery(function($){
                                         +'</div>'
                                     +'</article>';
                         
-                        $('.layout-thumb .shop-results').text('');
                         $('.layout-thumb .shop-results').append(shop);
                     });
                     
@@ -125,6 +138,8 @@ jQuery(function($){
                         
                         $('.layout-thumb .shop-results').append(pagination);
                     }
+                } else {
+                    $('.layout-thumb .shop-results').append('No shops found.');
                 }
             }
         });
@@ -140,9 +155,9 @@ jQuery(function($){
         var category = $('.select-category select').val() ? $('.select-category select').val() : '';
         var type = $('.filter-shop-input').data('type');
         
-        console.log('clicked page ' + page);
-        console.log('Searched for: ' + search_term);
-        console.log('Category: ' + category);
+//        console.log('clicked page ' + page);
+//        console.log('Searched for: ' + search_term);
+//        console.log('Category: ' + category);
 
         get_shops(search_term, category, page, type);
     });

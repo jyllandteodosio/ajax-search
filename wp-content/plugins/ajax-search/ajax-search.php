@@ -48,7 +48,7 @@ function get_shops( $request ) {
     
     $args = array(
         'orderby'           => 'title', 
-        'posts_per_page'    => 1,
+        'posts_per_page'    => 10,
         'paged'             => $current_page,
         'post_type'         => 'outlets',
         'search_tax_query'  => true,
