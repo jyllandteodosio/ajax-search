@@ -71,7 +71,7 @@ jQuery(function($){
             },
             success: function(data, textStatus, jqXHR) {
                 $('.layout-thumb .shop-results').text('');
-//                console.log(data);
+                console.log(data);
 
                 if(data.shops.length > 0) {
                     

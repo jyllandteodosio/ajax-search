@@ -117,6 +117,8 @@ function get_shops( $request ) {
             $article_id = 'post-' . get_the_ID();
             
             // Get thumb url
+            $thumb_url = '';
+            $thumb_alt = '';
             if(has_post_thumbnail()) {
                 $thumb_id = get_post_thumbnail_id(); 
                 $thumb_src = wp_get_attachment_image_src($thumb_id,'featured-image', true); 
@@ -155,6 +157,8 @@ function get_shops( $request ) {
                 'location'          => get_field('location'),
                 'tags'              => $tags,
             );
+            
+            $count++;
         }
 
         wp_reset_postdata(); 
