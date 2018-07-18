@@ -14,7 +14,11 @@ jQuery(function($){
         };
     };
     
-    var base_url = location.hostname !== 'localhost' ? location.hostname : 'http://localhost/theoutletslipa';
+    if(location.hostname != 'localhost') {
+        var url = 'http://beta.theloop.ph/theoutletslipa/wp-json/ajax-search/v1/shops';
+    } else {
+        var url = 'http://localhost/theoutletslipa/wp-json/ajax-search/v1/shops';
+    }
     
     // Initial Load
     var search_term = '';
@@ -63,7 +67,7 @@ jQuery(function($){
 
         $.ajax({
             method: 'GET',
-            url: base_url + '/wp-json/ajax-search/v1/shops',
+            url: url,
             data: params,
             beforeSend: function loader() {
                 $('.layout-thumb .shop-results').text('');
