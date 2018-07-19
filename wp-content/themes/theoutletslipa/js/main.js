@@ -11,6 +11,18 @@ jQuery(function($){
       },
     });
     
+//    var pitchswiper = new Swiper('.pitch-image', {
+//      pagination: {
+//        el: '.swiper-pagination',
+//      },
+//    });
+//    
+//    var pitchcontent = new Swiper('.pitch-content', {
+//    });
+//    
+//    pitchswiper.controller.control = pitchcontent;
+//    pitchcontent.controller.control = pitchswiper;
+    
     $('.tab-link').click( function() {
 	
         var tabID = $(this).attr('data-tab');
@@ -57,5 +69,11 @@ jQuery(function($){
     
     var modalBody = $('.modal-body').height();
 //    $('.modal-image').css('height', modalBody);
+    
+    $('.scroll span').click(function () {
+        $('html,body').animate({
+            scrollTop: $(".section-featured-pages").offset().top - 80
+        }, 1000);
+    });
     
 });

@@ -1,6 +1,6 @@
-<div class="section-query layout-thumb">
+<div class="section-query layout-thumb query-shop">
     
-        
+        <div class="wrap">
         <div class="section-filter filter-shop">
             <div class="search-container">
                 <input type="submit" value="&#xf002"/>
@@ -110,6 +110,6 @@
                 <?php endif; */?>          
             
     
-    
+    </div>
 
 </div>

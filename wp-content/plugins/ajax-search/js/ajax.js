@@ -14,7 +14,7 @@ jQuery(function($){
         };
     };
     
-    var base_url = location.hostname !== 'localhost' ? location.hostname : 'http://localhost/theoutletslipa';
+    var base_url = location.hostname !== 'localhost' ? location.hostname : 'http://localhost:8888/theoutletslipa';
     
     // Initial Load
     var search_term = '';

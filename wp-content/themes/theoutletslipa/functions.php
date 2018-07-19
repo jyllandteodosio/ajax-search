@@ -51,11 +51,11 @@ function genesis_sample_enqueue_scripts_styles() {
 	wp_enqueue_style( 'genesis-sample-fonts', '//fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'swiper-css', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css', array(), CHILD_THEME_VERSION );
     
-    if(is_page(167)) {
+//    if(!is_page(12)) {
         
 	   wp_enqueue_style( 'modal-css', get_stylesheet_directory_uri() . "/css/modal.css", array(), CHILD_THEME_VERSION );
 	   wp_enqueue_script( 'modaljs', get_stylesheet_directory_uri() . "/js/modal.js", array( 'jquery' ), CHILD_THEME_VERSION, true );
-    }
+//    }
 	wp_enqueue_style( 'main-css', get_stylesheet_directory_uri() . "/css/main.css", array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'dashicons' );
 
@@ -74,9 +74,9 @@ function genesis_sample_enqueue_scripts_styles() {
 }
 
 function wpdocs_dequeue_script() {
-    if(is_page(167)) {
+//    if(!is_page(12)) {
         wp_dequeue_script( 'wpdevelop-bootstrap' );
-    }
+//    }
 }
 add_action( 'wp_print_scripts', 'wpdocs_dequeue_script', 100 );
 
@@ -84,7 +84,7 @@ add_action( 'wp_print_scripts', 'wpdocs_dequeue_script', 100 );
 function genesis_sample_responsive_menu_settings() {
 
 	$settings = array(
-		'mainMenu'          => __( 'Menu', 'genesis-sample' ),
+		'mainMenu'          => __( '', 'genesis-sample' ),
 		'menuIconClass'     => 'dashicons-before dashicons-menu',
 		'subMenu'           => __( 'Submenu', 'genesis-sample' ),
 		'subMenuIconsClass' => 'dashicons-before dashicons-arrow-down-alt2',
@@ -132,7 +132,7 @@ add_theme_support( 'genesis-footer-widgets', 4 );
 add_image_size( 'featured-image', 720, 400, TRUE );
 
 // Rename primary and secondary navigation menus.
-add_theme_support( 'genesis-menus', array( 'primary' => __( 'After Header Menu', 'genesis-sample' ), 'secondary' => __( 'Footer Menu', 'genesis-sample' ) ) );
+add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis-sample' ), 'secondary' => __( 'Footer Menu', 'genesis-sample' ) ) );
 
 // Reposition the secondary navigation menu.
 remove_action( 'genesis_after_header', 'genesis_do_subnav' );
@@ -217,4 +217,31 @@ function add_body_class( $classes ) {
 	
 }
 
-//Add footer payment options
+genesis_register_sidebar( array(
+    'id' => 'search-widget',
+    'name' => __( 'Search Widget', 'genesis' ),
+    'description' => __( 'Search', 'theoutlestlipa' ),
+) );
+
+add_action( 'genesis_after_footer', 'add_genesis_widget_area' );
+function add_genesis_widget_area() {
+    genesis_widget_area( 'search-widget', array(
+		'before' => '<div id="searchModal" class="modal fade search-widget widget-area"><div class="search-wrap">',
+		'after'  => '</div></div>',
+    ) );
+
+}
+
+// Remove the header right widget area.
+unregister_sidebar( 'header-right' );
+
+// Reposition the primary navigation menu.
+remove_action( 'genesis_after_header', 'genesis_do_nav' );
+
+add_action('genesis_header', 'search_function');
+function search_function() {
+    ?>
+    <div class="search-button menu-item menu-item-type-custom menu-item-object-custom menu-item-186"><a href="#searchModal" itemprop="url" data-toggle="modal"><span itemprop="name"><i class="fas fa-search"></i></span></a></div>
+    <?php
+}
+add_action( 'genesis_header', 'genesis_do_nav' );

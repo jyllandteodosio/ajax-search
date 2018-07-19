@@ -1,6 +1,6 @@
-<div class="section-query layout-thumb">
+<div class="section-query layout-thumb query-dine">
     
-    
+    <div class="wrap">
             <div class="section-filter filter-dine">
                 <div class="search-container">
                     <input type="submit" value="&#xf002"/>
@@ -92,5 +92,5 @@
             
     
     
-
+    </div>
 </div>

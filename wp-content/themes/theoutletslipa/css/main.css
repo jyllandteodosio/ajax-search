@@ -246,7 +246,8 @@ a {
 a:focus,
 a:hover {
   color: #333;
-  text-decoration: none; }
+  text-decoration: none;
+  outline: 0; }
 
 p {
   margin: 0 0 28px;
@@ -1001,7 +1002,10 @@ img.alignright,
 .site-header .widget-area {
   float: right;
   text-align: right;
-  width: 900px; }
+  width: auto; }
+
+.site-header .nav-primary {
+  float: right; }
 
 /* # Site Navigation
 ---------------------------------------------------------------------------------------------------- */
@@ -1035,17 +1039,20 @@ img.alignright,
   border-bottom: 4px solid #e8050b; }
 
 .search-button {
-  padding-left: 30px;
-  padding-right: 30px;
-  border-left: 1px solid #eaeaea;
-  margin-left: 20px; }
+  margin-left: 20px;
+  display: inline-block;
+  float: right; }
   .search-button i {
     font-family: 'FontAwesome';
     font-style: normal;
     font-size: 24px;
     color: #e8131a; }
-  .search-button:hover {
-    border-bottom: 4px solid transparent; }
+  .search-button a {
+    padding: 30px 30px 26px;
+    border-left: 1px solid #eaeaea;
+    display: block;
+    margin-bottom: 0;
+    text-decoration: none; }
 
 .genesis-nav-menu .sub-menu {
   border-top: 1px solid #eee;
@@ -1135,7 +1142,7 @@ img.alignright,
 .entry-content ol,
 .entry-content ul {
   margin-bottom: 28px;
-  margin-left: 40px; }
+  margin-left: 15px; }
 
 .entry-content ol > li {
   list-style-type: decimal; }
@@ -1271,6 +1278,12 @@ p.entry-meta {
   width: 100%;
   display: block; }
 
+.header-widget-area section {
+  width: auto;
+  display: inline-block;
+  float: right;
+  margin-bottom: 0; }
+
 .section-home-banner {
   background-size: cover;
   background-repeat: no-repeat;
@@ -1300,6 +1313,24 @@ p.entry-meta {
       display: block; }
       .section-home-banner .heading-wrap span:last-child {
         font-weight: 400; }
+  .section-home-banner .scroll {
+    position: absolute;
+    width: 1px;
+    height: 160px;
+    background: #fff;
+    left: 33.29%;
+    bottom: 0; }
+    .section-home-banner .scroll span {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 700;
+      transform: rotate(90deg);
+      width: 60px;
+      position: absolute;
+      top: 18px;
+      left: -15px;
+      cursor: pointer; }
 
 .section-featured-pages {
   border-top: 1px solid #fff; }
@@ -1318,7 +1349,9 @@ p.entry-meta {
   .section-featured-pages .swiper-container {
     height: 500px; }
     .section-featured-pages .swiper-container .swiper-slide {
-      position: relative; }
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat; }
       .section-featured-pages .swiper-container .swiper-slide a {
         display: block;
         width: 100%;
@@ -1407,6 +1440,9 @@ p.entry-meta {
       color: #e8050b;
       border: 3px solid #e8050b;
       text-decoration: none; }
+      .section-pitch-map .container-pitch a:hover {
+        background: #e8050b;
+        color: #fff; }
 
 .section-instagram {
   display: inline-block;
@@ -1526,16 +1562,39 @@ p.entry-meta {
 .content-tabs .accordion ol li {
   list-style-type: decimal; }
 
-.page-template-page_location .content-sidebar-wrap .entry {
-  width: 810px;
-  float: left;
-  padding: 0; }
+.zoning-map .one-third img {
+  text-align: center;
+  margin: 30px auto; }
+.zoning-map .map-image {
+  width: 100%;
+  display: inline-block;
+  text-align: center; }
+.zoning-map .accordion .accordion-wrap {
+  display: inline-block;
+  width: 100%; }
+.zoning-map .accordion .title {
+  width: 100%;
+  clear: both;
+  display: inline-block;
+  font-size: 14px; }
+  .zoning-map .accordion .title > a {
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    outline: 0;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333; }
+    .zoning-map .accordion .title > a i {
+      float: right; }
 
-.page-template-page_pitch a {
+.page-template-page_pitch .site-inner a {
   display: inline-block;
   color: #333;
   font-weight: 600; }
-.page-template-page_pitch i {
+.page-template-page_pitch .site-inner i {
   font-family: 'FontAwesome';
   font-size: 18px;
   color: #555;
@@ -1543,11 +1602,38 @@ p.entry-meta {
   font-style: normal;
   margin-right: 10px;
   color: #e8050b; }
-
-.content-sidebar-content {
-  width: 810px;
-  padding-right: 15px;
-  float: left; }
+.page-template-page_pitch .pitch-image, .page-template-page_pitch .pitch-content {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1; }
+.page-template-page_pitch .inquiry-form {
+  display: inline-block;
+  width: 100%; }
+  .page-template-page_pitch .inquiry-form i {
+    color: #e8050b;
+    margin-right: 15px; }
+  .page-template-page_pitch .inquiry-form a {
+    color: #333;
+    font-weight: 600; }
+    .page-template-page_pitch .inquiry-form a:hover {
+      color: #e8050b;
+      text-decoration: underline; }
+.page-template-page_pitch .swiper-pagination {
+  text-align: left;
+  padding-left: 35px;
+  bottom: 30px; }
+  .page-template-page_pitch .swiper-pagination .swiper-pagination-bullet {
+    width: 30px;
+    height: 1px;
+    color: #fff;
+    background: #fff;
+    opacity: 1;
+    border-radius: 0; }
+  .page-template-page_pitch .swiper-pagination .swiper-pagination-bullet-active {
+    height: 2px; }
 
 .sidebar {
   padding-left: 15px; }
@@ -1568,7 +1654,7 @@ p.entry-meta {
 .page-template-page_contact label {
   margin-bottom: 5px;
   display: block; }
-.page-template-page_contact i {
+.page-template-page_contact .site-inner i {
   font-style: normal;
   font-size: 14px;
   margin-right: 8px; }
@@ -1597,10 +1683,11 @@ p.entry-meta {
   -moz-appearance: none; }
   .page-template-page_contact select:focus {
     border-color: #e8050b; }
-.page-template-page_contact .content-sidebar-wrap > .entry {
-  width: 810px;
-  padding-right: 15px;
-  float: left; }
+.page-template-page_contact .content-sidebar-wrap i {
+  font-style: normal;
+  font-size: 14px;
+  margin-right: 8px;
+  font-family: 'FontAwesome'; }
 .page-template-page_contact .sidebar-title {
   font-weight: 700;
   font-size: 18px;
@@ -1621,9 +1708,21 @@ p.entry-meta {
     display: inline-block; }
     .page-template-page_contact .details .text span {
       display: table; }
+.page-template-page_contact .inquiry-form {
+  display: inline-block;
+  width: 100%; }
+  .page-template-page_contact .inquiry-form i {
+    color: #e8050b;
+    margin-right: 15px; }
+  .page-template-page_contact .inquiry-form a {
+    color: #333;
+    font-weight: 600; }
+    .page-template-page_contact .inquiry-form a:hover {
+      color: #e8050b;
+      text-decoration: underline; }
 
 .sidebar-wrap {
-  padding-left: 15px; }
+  padding-left: 30px; }
   .sidebar-wrap .sidebar-title {
     font-weight: 700;
     font-size: 18px;
@@ -1632,7 +1731,7 @@ p.entry-meta {
 .booking_form_div {
   display: inline-block;
   width: 100%;
-  margin-top: 30px; }
+  margin-top: 80px; }
   .booking_form_div .wpbc_structure_calendar {
     margin-right: 0 !important;
     padding: 40px 0 0 40px; }
@@ -1806,9 +1905,11 @@ p.entry-meta {
       text-decoration: none;
       color: #333;
       margin-left: -3px; }
-    .section-query article .detail-wrap ul li {
-      list-style-type: none;
-      line-height: 26px; }
+    .section-query article .detail-wrap ul {
+      margin-left: 30px; }
+      .section-query article .detail-wrap ul li {
+        list-style-type: none;
+        line-height: 26px; }
   .section-query article .featured-name {
     height: 100%;
     position: absolute;
@@ -1969,6 +2070,41 @@ p.entry-meta {
     .section-filter.filter-promos .search-container input[type="search"] {
       width: 90%; }
 
+.pagination ul {
+  display: inline-block;
+  padding: 0 20px;
+  border: 1px solid #ccc; }
+  .pagination ul li {
+    display: inline-block; }
+    .pagination ul li .page-link {
+      padding: 20px 10px;
+      text-decoration: none;
+      color: #777;
+      font-size: 16px;
+      display: block;
+      font-weight: 400; }
+
+#searchModal .search-wrap {
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  padding: 30px 30px;
+  margin: 0 auto; }
+#searchModal form {
+  position: relative; }
+  #searchModal form input[type="submit"] {
+    position: absolute;
+    cursor: pointer;
+    font-size: 16px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 16px 24px;
+    text-decoration: none;
+    background: transparent;
+    color: #777;
+    font-family: 'FontAwesome';
+    content: '\f002'; }
+
 /* # Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
 .footer-widgets {
@@ -1984,8 +2120,9 @@ p.entry-meta {
     text-transform: uppercase;
     font-weight: 800; }
   .footer-widgets .detail-list i {
-    width: 30px;
-    font-size: 18px; }
+    width: 20px;
+    font-size: 18px;
+    color: #fff; }
   .footer-widgets .detail-list li {
     padding-bottom: 0; }
   .footer-widgets .detail-list span {
@@ -2005,6 +2142,9 @@ p.entry-meta {
   width: 25%;
   display: inline-block;
   float: left; }
+
+.footer-widgets-2 {
+  margin-left: -40px; }
 
 .footer-widgets-4 {
   text-align: right;
@@ -2039,8 +2179,7 @@ p.entry-meta {
   .sidebar-sidebar-content .content-sidebar-wrap {
     width: 920px; }
 
-  .content,
-  .site-header .widget-area {
+  .content {
     width: 800px; }
 
   .sidebar-content-sidebar .content,
@@ -2051,13 +2190,153 @@ p.entry-meta {
   .sidebar-primary {
     width: 300px; }
 
-  .footer-widgets-1,
-  .footer-widgets-2,
-  .footer-widgets-3 {
-    width: 340px; }
+  .section-instagram .container-instagram {
+    float: right;
+    width: 100%;
+    max-width: -webkit-calc(100vw - ((100vw - 1140px) /2));
+    max-width: calc(100vw - ((100vw - 1140px) /2)); }
 
-  .footer-widgets-1 {
-    margin-right: 60px; } }
+  .section-filter .search-container {
+    width: 770px; }
+    .section-filter .search-container input[type="search"] {
+      width: 700px; }
+
+  .booking_form_div {
+    display: inline-block;
+    width: 100%;
+    margin-top: 30px; }
+    .booking_form_div .wpbc_structure_calendar {
+      margin-right: 0 !important;
+      padding: 40px 0 0 40px; }
+      .booking_form_div .wpbc_structure_calendar .block_hints.datepick {
+        height: auto; }
+      .booking_form_div .wpbc_structure_calendar .block_check_in_out, .booking_form_div .wpbc_structure_calendar .block_pending, .booking_form_div .wpbc_structure_calendar .block_time, .booking_form_div .wpbc_structure_calendar .block_booked, .booking_form_div .wpbc_structure_calendar .block_free {
+        height: 11px;
+        width: 11px;
+        border: 0; }
+      .booking_form_div .wpbc_structure_calendar .block_text {
+        line-height: 12px;
+        height: auto;
+        padding: 0 10px 0 15px; }
+      .booking_form_div .wpbc_structure_calendar .block_free {
+        background: #e7e7e7; }
+      .booking_form_div .wpbc_structure_calendar .wpdev_hint_with_text {
+        margin-right: 20px; }
+    .booking_form_div .wpbc_structure_form {
+      border: 1px solid #ccc;
+      width: 100%; }
+      .booking_form_div .wpbc_structure_form .first-column-form {
+        background: #ebebeb;
+        padding: 85px 75px;
+        float: left;
+        width: 50%; }
+        .booking_form_div .wpbc_structure_form .first-column-form input[type="text"] {
+          border-radius: 0;
+          width: 100%;
+          height: 45px;
+          box-sizing: border-box;
+          padding: 2px 15px;
+          border: 1px solid #ccc; }
+        .booking_form_div .wpbc_structure_form .first-column-form .form-group {
+          margin-top: 0; }
+      .booking_form_div .wpbc_structure_form label {
+        font-size: 14px;
+        font-weight: 400;
+        color: #777; }
+      .booking_form_div .wpbc_structure_form select {
+        border-radius: 0;
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none; }
+      .booking_form_div .wpbc_structure_form .second-column-form {
+        display: inline-block;
+        float: left;
+        width: 200px;
+        padding-top: 35px; }
+        .booking_form_div .wpbc_structure_form .second-column-form select {
+          box-sizing: border-box;
+          width: 100% !important;
+          border: 0;
+          padding-right: 15px; }
+        .booking_form_div .wpbc_structure_form .second-column-form .form-group {
+          display: inline-block;
+          width: 100%;
+          border-bottom: 1px solid #f1f1f1;
+          margin: 5px 0 0; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group label, .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            display: inline-block; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            float: right;
+            position: relative; }
+            .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls:after {
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #777;
+              position: absolute;
+              right: 0;
+              top: 2px;
+              z-index: 1;
+              text-align: center;
+              pointer-events: none;
+              box-sizing: border-box; }
+        .booking_form_div .wpbc_structure_form .second-column-form .addon-title {
+          font-size: 16px;
+          font-weight: 500;
+          color: #777; }
+      .booking_form_div .wpbc_structure_form .third-column-form {
+        display: inline-block;
+        padding-left: 40px;
+        padding-right: 40px;
+        clear: both;
+        width: 50%; }
+        .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child {
+          float: left;
+          display: inline-block; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+            box-sizing: border-box;
+            width: 200px; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+            width: 280px;
+            height: 45px; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button {
+            width: 200px;
+            height: 45px;
+            border: 2px solid #e8050b;
+            color: #e8050b;
+            border-radius: 0;
+            background: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 14px;
+            margin-left: 9px; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button:hover, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button:hover {
+              background: #e8050b;
+              color: #fff; }
+        .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls {
+          position: relative; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls:after {
+            content: "\f107";
+            font-family: FontAwesome;
+            color: #777;
+            right: 16px;
+            top: 12px;
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            pointer-events: none;
+            box-sizing: border-box;
+            background: #fff; }
+        .booking_form_div .wpbc_structure_form .third-column-form input, .booking_form_div .wpbc_structure_form .third-column-form select {
+          box-sizing: border-box; }
+      .booking_form_div .wpbc_structure_form p {
+        width: 50%;
+        float: right;
+        text-align: center;
+        font-size: 12px;
+        color: #777;
+        font-style: italic;
+        line-height: 18px;
+        padding: 0 70px; } }
 @media only screen and (max-width: 1200px) {
   .wrap {
     max-width: 960px; }
@@ -2067,8 +2346,7 @@ p.entry-meta {
   .sidebar-sidebar-content .content-sidebar-wrap {
     width: 740px; }
 
-  .content,
-  .site-header .widget-area {
+  .content {
     width: 620px; }
 
   .sidebar-content-sidebar .content,
@@ -2079,10 +2357,181 @@ p.entry-meta {
   .footer-widgets-1,
   .footer-widgets-2,
   .footer-widgets-3 {
-    width: 300px; }
+    width: 33.3333333333%;
+    margin: 0; }
 
-  .footer-widgets-1 {
-    margin-right: 30px; } }
+  .footer-widgets-4 {
+    width: 100%;
+    margin-top: 30px;
+    text-align: left; }
+
+  .section-instagram .container-instagram {
+    float: right;
+    width: 100%;
+    max-width: -webkit-calc(100vw - ((100vw - 960px) /2));
+    max-width: calc(100vw - ((100vw - 960px) /2)); }
+
+  .section-filter .search-container {
+    width: 590px; }
+    .section-filter .search-container input[type="search"] {
+      width: 520px; }
+
+  .section-query.query-promos article {
+    width: 100%;
+    padding: 0; }
+
+  .site-header > .wrap {
+    padding: 0 0 0 30px; }
+
+  .booking_form_div {
+    display: inline-block;
+    width: 100%;
+    margin-top: 30px; }
+    .booking_form_div .wpbc_structure_calendar {
+      margin-right: 0 !important;
+      padding: 40px 0 0 40px; }
+      .booking_form_div .wpbc_structure_calendar .block_hints.datepick {
+        height: auto; }
+      .booking_form_div .wpbc_structure_calendar .block_check_in_out, .booking_form_div .wpbc_structure_calendar .block_pending, .booking_form_div .wpbc_structure_calendar .block_time, .booking_form_div .wpbc_structure_calendar .block_booked, .booking_form_div .wpbc_structure_calendar .block_free {
+        height: 11px;
+        width: 11px;
+        border: 0; }
+      .booking_form_div .wpbc_structure_calendar .block_text {
+        line-height: 12px;
+        height: auto;
+        padding: 0 10px 0 15px; }
+      .booking_form_div .wpbc_structure_calendar .block_free {
+        background: #e7e7e7; }
+      .booking_form_div .wpbc_structure_calendar .wpdev_hint_with_text {
+        margin-right: 20px; }
+    .booking_form_div .wpbc_structure_form {
+      border: 1px solid #ccc;
+      width: 100%; }
+      .booking_form_div .wpbc_structure_form .first-column-form {
+        background: #ebebeb;
+        padding: 85px 75px;
+        float: left;
+        width: 100%; }
+        .booking_form_div .wpbc_structure_form .first-column-form input[type="text"] {
+          border-radius: 0;
+          width: 100%;
+          height: 45px;
+          box-sizing: border-box;
+          padding: 2px 15px;
+          border: 1px solid #ccc; }
+        .booking_form_div .wpbc_structure_form .first-column-form .form-group {
+          margin-top: 0; }
+      .booking_form_div .wpbc_structure_form label {
+        font-size: 14px;
+        font-weight: 400;
+        color: #777; }
+      .booking_form_div .wpbc_structure_form select {
+        border-radius: 0;
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none; }
+      .booking_form_div .wpbc_structure_form .second-column-form {
+        display: inline-block;
+        float: left;
+        width: 200px;
+        padding-top: 35px; }
+        .booking_form_div .wpbc_structure_form .second-column-form select {
+          box-sizing: border-box;
+          width: 100% !important;
+          border: 0;
+          padding-right: 15px; }
+        .booking_form_div .wpbc_structure_form .second-column-form .form-group {
+          display: inline-block;
+          width: 100%;
+          border-bottom: 1px solid #f1f1f1;
+          margin: 5px 0 0; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group label, .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            display: inline-block; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            float: right;
+            position: relative; }
+            .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls:after {
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #777;
+              position: absolute;
+              right: 0;
+              top: 2px;
+              z-index: 1;
+              text-align: center;
+              pointer-events: none;
+              box-sizing: border-box; }
+        .booking_form_div .wpbc_structure_form .second-column-form .addon-title {
+          font-size: 16px;
+          font-weight: 500;
+          color: #777; }
+      .booking_form_div .wpbc_structure_form .third-column-form {
+        display: inline-block;
+        padding-left: 40px;
+        padding-right: 40px;
+        clear: both;
+        width: 100%; }
+        .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child {
+          float: left;
+          display: inline-block; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+            box-sizing: border-box;
+            width: 200px; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+            width: 280px;
+            height: 45px; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button {
+            width: 200px;
+            height: 45px;
+            border: 2px solid #e8050b;
+            color: #e8050b;
+            border-radius: 0;
+            background: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 14px;
+            margin-left: 9px; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button:hover, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button:hover {
+              background: #e8050b;
+              color: #fff; }
+        .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls {
+          position: relative; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls:after {
+            content: "\f107";
+            font-family: FontAwesome;
+            color: #777;
+            right: 16px;
+            top: 12px;
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            pointer-events: none;
+            box-sizing: border-box;
+            background: #fff; }
+        .booking_form_div .wpbc_structure_form .third-column-form input, .booking_form_div .wpbc_structure_form .third-column-form select {
+          box-sizing: border-box; }
+      .booking_form_div .wpbc_structure_form p {
+        width: 100%;
+        float: right;
+        text-align: left;
+        font-size: 12px;
+        color: #777;
+        font-style: italic;
+        line-height: 18px;
+        padding: 0 40px; } }
+@media only screen and (max-width: 1180px) {
+  .site-header > .wrap {
+    padding: 0 0 0 10px; }
+
+  .header-image .title-area {
+    padding: 12px 0px 12px 0;
+    max-width: 210px; }
+
+  .site-header .widget-area {
+    width: 800px; }
+
+  .genesis-nav-menu a {
+    padding: 35px 5px 31px; } }
 @media only screen and (max-width: 1023px) {
   .wrap {
     max-width: 800px; }
@@ -2105,22 +2554,11 @@ p.entry-meta {
   .title-area {
     width: 100%; }
 
-  .site-header .wrap {
-    padding-left: 5%;
-    padding-right: 5%; }
-
   .genesis-nav-menu li,
   .header-image .title-area,
   .site-header ul.genesis-nav-menu,
   .site-header .search-form {
     float: none; }
-
-  .genesis-nav-menu,
-  .site-description,
-  .site-header .title-area,
-  .site-header .widget-area,
-  .site-title {
-    text-align: center; }
 
   .site-header .search-form {
     margin: 16px auto; }
@@ -2141,7 +2579,7 @@ p.entry-meta {
   .sub-menu-toggle {
     background-color: #fff;
     border-width: 0;
-    color: #333;
+    color: #e8131a;
     display: block;
     margin: 0 auto;
     overflow: hidden;
@@ -2154,7 +2592,7 @@ p.entry-meta {
   .sub-menu-toggle:hover {
     background-color: #fff;
     border-width: 0;
-    color: #c3251d; }
+    color: #e8131a; }
 
   .menu-toggle {
     line-height: 22px;
@@ -2168,8 +2606,7 @@ p.entry-meta {
     border-top: 1px solid #eee; }
 
   .menu-toggle::before {
-    font-size: 1.5em;
-    margin-right: 10px;
+    font-size: 32px;
     text-rendering: auto; }
 
   .sub-menu-toggle {
@@ -2237,14 +2674,103 @@ p.entry-meta {
   .genesis-responsive-menu .genesis-nav-menu .sub-menu .sub-menu {
     margin: 0; }
 
+  .title-area {
+    width: auto; }
+
+  .header-image .title-area {
+    float: left;
+    width: 100%; }
+
+  .menu-toggle {
+    width: auto;
+    border-top: none;
+    float: right;
+    outline: 0;
+    padding: 30px 30px 26px; }
+
+  .site-header > .wrap {
+    padding: 0; }
+
+  .header-image .site-title {
+    padding-left: 10px; }
+
+  .menu-toggle,
+  .menu-toggle:focus,
+  .menu-toggle:hover {
+    border-top: none; }
+
+  .search-button {
+    margin-left: 0; }
+
+  .nav-primary {
+    float: none;
+    clear: both;
+    width: 100%; }
+
+  .section-featured-pages .one-third {
+    width: 50%; }
+    .section-featured-pages .one-third:nth-child(2) {
+      border-right: 0; }
+    .section-featured-pages .one-third:last-child {
+      width: 100%;
+      border-top: 1px solid #fff; }
+      .section-featured-pages .one-third:last-child .swiper-container {
+        height: 300px; }
+
+  .section-pitch-map .two-thirds {
+    width: 100%; }
+  .section-pitch-map .one-third {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 40px; }
+  .section-pitch-map .google-maps iframe {
+    width: 100%; }
+
+  .section-instagram .container-instagram {
+    float: right;
+    width: 100%;
+    max-width: -webkit-calc(100vw - ((100vw - 800px) /2));
+    max-width: calc(100vw - ((100vw - 800px) /2)); }
+
+  .page-template-page_contact .two-thirds {
+    width: 100%; }
+  .page-template-page_contact .one-third {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px; }
+    .page-template-page_contact .one-third .sidebar-wrap {
+      padding-left: 0; }
+
   .footer-widgets-1,
   .footer-widgets-2 {
-    margin: 0 auto 40px; } }
+    width: 50%;
+    margin: 0; }
+
+  .footer-widgets-4,
+  .footer-widgets-3 {
+    width: 50%;
+    margin-top: 50px;
+    text-align: left; } }
+@media only screen and (max-width: 960px) {
+  .section-home-banner .heading-wrap {
+    position: relative;
+    text-align: center;
+    float: none;
+    width: 100%;
+    margin-top: 20%; }
+    .section-home-banner .heading-wrap h1:before {
+      left: 0;
+      right: 0;
+      margin: 0 auto; }
+  .section-home-banner .scroll {
+    left: 49.9%;
+    height: 130px; } }
 @media only screen and (max-width: 860px) {
-  body,
-  body > div {
-    font-size: 18px;
-    font-size: 1.8rem; }
+  .section-instagram .container-instagram {
+    float: right;
+    width: 100%;
+    padding-left: 5%;
+    max-width: none; }
 
   .wrap {
     padding-left: 5%;
@@ -2282,7 +2808,376 @@ p.entry-meta {
   .two-sixths,
   .two-thirds {
     margin: 0;
-    width: 100%; } }
+    width: 100%; }
+
+  .section-filter.filter-promos .search-container input[type="search"] {
+    width: 80%; }
+
+  .page-template-page_location .one-third {
+    margin-left: 0;
+    margin-top: 50px; }
+    .page-template-page_location .one-third .sidebar-wrap {
+      padding-left: 0; }
+    .page-template-page_location .one-third .details iframe {
+      width: 100%; }
+    .page-template-page_location .one-third .details img {
+      width: 100%; }
+
+  .page-template-page_pitch .pitch-image {
+    margin-bottom: 30px; } }
+@media only screen and (max-width: 780px) {
+  .booking_form_div {
+    display: inline-block;
+    width: 100%;
+    margin-top: 30px; }
+    .booking_form_div .wpbc_structure_calendar {
+      margin-right: 0 !important;
+      padding: 40px 40px 0 40px; }
+      .booking_form_div .wpbc_structure_calendar .block_hints.datepick {
+        height: auto; }
+      .booking_form_div .wpbc_structure_calendar .block_check_in_out, .booking_form_div .wpbc_structure_calendar .block_pending, .booking_form_div .wpbc_structure_calendar .block_time, .booking_form_div .wpbc_structure_calendar .block_booked, .booking_form_div .wpbc_structure_calendar .block_free {
+        height: 11px;
+        width: 11px;
+        border: 0; }
+      .booking_form_div .wpbc_structure_calendar .block_text {
+        line-height: 12px;
+        height: auto;
+        padding: 0 10px 0 15px; }
+      .booking_form_div .wpbc_structure_calendar .block_free {
+        background: #e7e7e7; }
+      .booking_form_div .wpbc_structure_calendar .wpdev_hint_with_text {
+        margin-right: 20px; }
+    .booking_form_div .wpbc_structure_form {
+      border: 1px solid #ccc;
+      width: 100%;
+      display: inline-block;
+      padding-bottom: 30px; }
+      .booking_form_div .wpbc_structure_form .bk_calendar_frame {
+        display: inline-block;
+        width: 100% !important; }
+      .booking_form_div .wpbc_structure_form .first-column-form {
+        background: #ebebeb;
+        padding: 85px 75px;
+        float: left;
+        width: 100%;
+        margin-bottom: 40px; }
+        .booking_form_div .wpbc_structure_form .first-column-form input[type="text"] {
+          border-radius: 0;
+          width: 100%;
+          height: 45px;
+          box-sizing: border-box;
+          padding: 2px 15px;
+          border: 1px solid #ccc; }
+        .booking_form_div .wpbc_structure_form .first-column-form .form-group {
+          margin-top: 0; }
+      .booking_form_div .wpbc_structure_form label {
+        font-size: 14px;
+        font-weight: 400;
+        color: #777; }
+      .booking_form_div .wpbc_structure_form select {
+        border-radius: 0;
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none; }
+      .booking_form_div .wpbc_structure_form .second-column-form {
+        display: inline-block;
+        float: left;
+        width: 100%;
+        padding-top: 35px;
+        padding-left: 40px;
+        padding-right: 40px; }
+        .booking_form_div .wpbc_structure_form .second-column-form select {
+          box-sizing: border-box;
+          width: 100% !important;
+          border: 0;
+          padding-right: 15px; }
+        .booking_form_div .wpbc_structure_form .second-column-form .form-group {
+          display: inline-block;
+          width: 100%;
+          border-bottom: 1px solid #f1f1f1;
+          margin: 5px 0 0; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group label, .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            display: inline-block; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            float: right;
+            position: relative; }
+            .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls:after {
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #777;
+              position: absolute;
+              right: 0;
+              top: 2px;
+              z-index: 1;
+              text-align: center;
+              pointer-events: none;
+              box-sizing: border-box; }
+        .booking_form_div .wpbc_structure_form .second-column-form .addon-title {
+          font-size: 16px;
+          font-weight: 500;
+          color: #777; }
+      .booking_form_div .wpbc_structure_form .third-column-form {
+        display: inline-block;
+        padding-left: 40px;
+        padding-right: 40px;
+        clear: both;
+        width: 100%; }
+        .booking_form_div .wpbc_structure_form .third-column-form .form-group {
+          width: 100%; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child {
+            float: left;
+            display: inline-block; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+              box-sizing: border-box;
+              width: 100%; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+              width: 100%;
+              height: 45px; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button {
+              width: 100%;
+              height: 45px;
+              border: 2px solid #e8050b;
+              color: #e8050b;
+              border-radius: 0;
+              background: #fff;
+              text-transform: uppercase;
+              font-weight: 700;
+              margin-top: 14px;
+              margin-left: 0px; }
+              .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button:hover, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button:hover {
+                background: #e8050b;
+                color: #fff; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls {
+            position: relative; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls:after {
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #777;
+              right: 16px;
+              top: 12px;
+              position: absolute;
+              z-index: 1;
+              text-align: center;
+              pointer-events: none;
+              box-sizing: border-box;
+              background: #fff; }
+        .booking_form_div .wpbc_structure_form .third-column-form input, .booking_form_div .wpbc_structure_form .third-column-form select {
+          box-sizing: border-box; }
+      .booking_form_div .wpbc_structure_form p {
+        width: 100%;
+        float: right;
+        text-align: left;
+        font-size: 12px;
+        color: #777;
+        font-style: italic;
+        line-height: 18px;
+        padding: 0 40px; } }
+@media only screen and (max-width: 767px) {
+  .section-home-banner .heading-wrap {
+    position: relative;
+    text-align: center;
+    float: none;
+    width: 100%;
+    margin-top: 20%; }
+    .section-home-banner .heading-wrap h1 {
+      font-size: 50px;
+      line-height: 50px; }
+      .section-home-banner .heading-wrap h1:before {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        background-repeat: repeat-x;
+        width: 100%; }
+  .section-home-banner .scroll {
+    left: 50%;
+    height: 100px; }
+
+  .home .page-title {
+    font-size: 24px;
+    line-height: 34px; }
+
+  .section-featured-pages .one-third {
+    width: 100%; }
+    .section-featured-pages .one-third:nth-child(2) {
+      border-right: 0;
+      border-left: 0;
+      border-top: 1px solid #fff; }
+    .section-featured-pages .one-third:last-child {
+      width: 100%;
+      border-top: 1px solid #fff; }
+  .section-featured-pages .swiper-container {
+    height: 300px; }
+
+  .section-query.query-promos article {
+    width: 100%;
+    padding: 0;
+    height: auto; }
+  .section-query.query-promos .featured-image {
+    width: 100%; }
+  .section-query.query-promos .detail-wrap {
+    width: 100%; }
+
+  .footer-widgets-1 {
+    width: 100%;
+    margin: 0; }
+
+  .footer-widgets-4,
+  .footer-widgets-3,
+  .footer-widgets-2 {
+    width: 100%;
+    margin-top: 30px;
+    text-align: left; } }
+@media only screen and (max-width: 480px) {
+  .booking_form_div {
+    display: inline-block;
+    width: 100%;
+    margin-top: 30px; }
+    .booking_form_div .wpbc_structure_calendar {
+      margin-right: 0 !important;
+      padding: 40px 40px 0 40px; }
+      .booking_form_div .wpbc_structure_calendar .block_hints.datepick {
+        height: auto; }
+      .booking_form_div .wpbc_structure_calendar .block_check_in_out, .booking_form_div .wpbc_structure_calendar .block_pending, .booking_form_div .wpbc_structure_calendar .block_time, .booking_form_div .wpbc_structure_calendar .block_booked, .booking_form_div .wpbc_structure_calendar .block_free {
+        height: 11px;
+        width: 11px;
+        border: 0; }
+      .booking_form_div .wpbc_structure_calendar .block_text {
+        line-height: 12px;
+        height: auto;
+        padding: 0 10px 0 15px; }
+      .booking_form_div .wpbc_structure_calendar .block_free {
+        background: #e7e7e7; }
+      .booking_form_div .wpbc_structure_calendar .wpdev_hint_with_text {
+        margin-right: 20px; }
+    .booking_form_div .wpbc_structure_form {
+      border: 1px solid #ccc;
+      width: 100%;
+      display: inline-block;
+      padding-bottom: 30px; }
+      .booking_form_div .wpbc_structure_form .bk_calendar_frame {
+        display: inline-block;
+        width: 100% !important; }
+      .booking_form_div .wpbc_structure_form .first-column-form {
+        background: #ebebeb;
+        padding: 40px 30px;
+        float: left;
+        width: 100%;
+        margin-bottom: 40px; }
+        .booking_form_div .wpbc_structure_form .first-column-form input[type="text"] {
+          border-radius: 0;
+          width: 100%;
+          height: 45px;
+          box-sizing: border-box;
+          padding: 2px 15px;
+          border: 1px solid #ccc; }
+        .booking_form_div .wpbc_structure_form .first-column-form .form-group {
+          margin-top: 0; }
+      .booking_form_div .wpbc_structure_form label {
+        font-size: 14px;
+        font-weight: 400;
+        color: #777; }
+      .booking_form_div .wpbc_structure_form select {
+        border-radius: 0;
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none; }
+      .booking_form_div .wpbc_structure_form .second-column-form {
+        display: inline-block;
+        float: left;
+        width: 100%;
+        padding-top: 35px;
+        padding-left: 40px;
+        padding-right: 40px; }
+        .booking_form_div .wpbc_structure_form .second-column-form select {
+          box-sizing: border-box;
+          width: 100% !important;
+          border: 0;
+          padding-right: 15px; }
+        .booking_form_div .wpbc_structure_form .second-column-form .form-group {
+          display: inline-block;
+          width: 100%;
+          border-bottom: 1px solid #f1f1f1;
+          margin: 5px 0 0; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group label, .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            display: inline-block; }
+          .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls {
+            float: right;
+            position: relative; }
+            .booking_form_div .wpbc_structure_form .second-column-form .form-group .controls:after {
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #777;
+              position: absolute;
+              right: 0;
+              top: 2px;
+              z-index: 1;
+              text-align: center;
+              pointer-events: none;
+              box-sizing: border-box; }
+        .booking_form_div .wpbc_structure_form .second-column-form .addon-title {
+          font-size: 16px;
+          font-weight: 500;
+          color: #777; }
+      .booking_form_div .wpbc_structure_form .third-column-form {
+        display: inline-block;
+        padding-left: 40px;
+        padding-right: 40px;
+        clear: both;
+        width: 100%; }
+        .booking_form_div .wpbc_structure_form .third-column-form .form-group {
+          width: 100%; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child {
+            float: left;
+            display: inline-block; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child input, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+              box-sizing: border-box;
+              width: 100%; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child select, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child select {
+              width: 100%;
+              height: 45px; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button {
+              width: 100%;
+              height: 45px;
+              border: 2px solid #e8050b;
+              color: #e8050b;
+              border-radius: 0;
+              background: #fff;
+              text-transform: uppercase;
+              font-weight: 700;
+              margin-top: 14px;
+              margin-left: 0px; }
+              .booking_form_div .wpbc_structure_form .third-column-form .form-group:first-child button:hover, .booking_form_div .wpbc_structure_form .third-column-form .form-group:last-child button:hover {
+                background: #e8050b;
+                color: #fff; }
+          .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls {
+            position: relative; }
+            .booking_form_div .wpbc_structure_form .third-column-form .form-group .controls:after {
+              content: "\f107";
+              font-family: FontAwesome;
+              color: #777;
+              right: 16px;
+              top: 12px;
+              position: absolute;
+              z-index: 1;
+              text-align: center;
+              pointer-events: none;
+              box-sizing: border-box;
+              background: #fff; }
+        .booking_form_div .wpbc_structure_form .third-column-form input, .booking_form_div .wpbc_structure_form .third-column-form select {
+          box-sizing: border-box; }
+      .booking_form_div .wpbc_structure_form p {
+        width: 100%;
+        float: right;
+        text-align: left;
+        font-size: 12px;
+        color: #777;
+        font-style: italic;
+        line-height: 18px;
+        padding: 0 40px; } }
+@media only screen and (max-width: 460px) {
+  .content-tabs .tabs .tab-link {
+    height: 60px;
+    line-height: 18px; } }
 /* # Print Styles
 ---------------------------------------------------------------------------------------------------- */
 @media print {
