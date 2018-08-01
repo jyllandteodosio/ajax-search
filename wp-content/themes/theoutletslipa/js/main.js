@@ -8,20 +8,15 @@ jQuery(function($){
     var swiper = new Swiper('.swiper-container', {
       pagination: {
         el: '.swiper-pagination',
+        clickable: true
       },
+        preventClicks: false,
+        autoplay: {
+            delay: 5000,
+          },
     });
     
-//    var pitchswiper = new Swiper('.pitch-image', {
-//      pagination: {
-//        el: '.swiper-pagination',
-//      },
-//    });
-//    
-//    var pitchcontent = new Swiper('.pitch-content', {
-//    });
-//    
-//    pitchswiper.controller.control = pitchcontent;
-//    pitchcontent.controller.control = pitchswiper;
+    
     
     $('.tab-link').click( function() {
 	
@@ -44,13 +39,13 @@ jQuery(function($){
 
         return false;
     });
-       
-    $('.wpbc_structure_form .form-group:nth-child(-n+4)').wrapAll('<div class="first-column-form"></div>');
-    $('.wpbc_structure_form > .form-group:nth-child(-n+8)').wrapAll('<div class="second-column-form"></div>'); 
-    $('.wpbc_structure_form > .form-group:nth-child(-n+12)').wrapAll('<div class="third-column-form"></div>'); 
-    $('.wpbc_structure_calendar').detach().insertAfter(".first-column-form");
-    $('.second-column-form').prepend('<span class="addon-title">Add-ons:</span>');
-    $('.wpbc_structure_form').append('<p>Submission of this form does not guarantee your booking. Please wait for notification via email or mobile for confirmation.</p>');
+//       
+//    $('.wpbc_structure_form .form-group:nth-child(-n+4)').wrapAll('<div class="first-column-form"></div>');
+//    $('.wpbc_structure_form > .form-group:nth-child(-n+8)').wrapAll('<div class="second-column-form"></div>'); 
+//    $('.wpbc_structure_form > .form-group:nth-child(-n+12)').wrapAll('<div class="third-column-form"></div>'); 
+//    $('.wpbc_structure_calendar').detach().insertAfter(".first-column-form");
+//    $('.second-column-form').prepend('<span class="addon-title">Add-ons:</span>');
+//    $('.wpbc_structure_form').append('<p>Submission of this form does not guarantee your booking. Please wait for notification via email or mobile for confirmation.</p>');
     
     
     $('.layout-change').on('click', function(){
@@ -62,9 +57,14 @@ jQuery(function($){
         }
     });
     
+    $('.shop-results .featured-image .image-wrap img').centerImage('inside');
+    $(window).on('resize',function(){
+        $('.query-promos .image-wrap img').centerImage();
+        $('.featured-image-modal img').centerImage();
+        $('.shop-results .featured-image .image-wrap img').centerImage('inside');
+    });
+    $(window).trigger('resize');
     
-    $('.query-promos .image-wrap img').centerImage();
-    $('.featured-image-modal img').centerImage();
     
     
     var modalBody = $('.modal-body').height();

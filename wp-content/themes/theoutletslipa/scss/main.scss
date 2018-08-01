@@ -1014,7 +1014,7 @@ img.alignright,
 	max-width: 250px;
 	padding: 0;
     padding: 12px 30px 12px 0;
-    border-right: 1px solid #eaeaea;
+//    border-right: 1px solid #eaeaea;
 }
 
 .header-full-width .title-area {
@@ -1217,7 +1217,7 @@ img.alignright,
 
 .nav-primary {
 	background-color: #fff;
-	border-top: 1px solid #eee;
+//	border-top: 1px solid #eee;
 }
 
 /* ## Footer Navigation
@@ -1433,12 +1433,22 @@ p.entry-meta {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    &:before {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: rgba(0,0,0,0.5);
+        content: '';
+        top: 0;
+    }
     .heading-wrap {
         width: 50%;
         float: right;
         position: absolute;
         right: 0;
         bottom: 30%;
+//        text-shadow: 0px 0px 50px rgba(0, 0, 0, 0.8);
+//        -webkit-text-shadow: 0px 0px 50px rgba(0, 0, 0, 0.8);
         h1 {
             color: #fff;
             font-weight: 800;
@@ -1512,6 +1522,15 @@ p.entry-meta {
             position: relative;
             background-size: cover;
             background-repeat: no-repeat;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);    
+            }
             a {
                 display: block;
                 width: 100%;
@@ -1554,21 +1573,42 @@ p.entry-meta {
                     margin-left: 10px;
                 }
             }
+            .view-page {
+                color: #fff;
+                width: 100px;
+                float: right;
+                z-index: 99999;
+                height: 20px;
+                position: relative;
+                margin-bottom: -20px;
+            }
         }
         .swiper-pagination {
             text-align: left;
             padding-left: 35px;
             bottom: 30px;
+            width: auto;
             .swiper-pagination-bullet {
                 width: 30px;
-                height: 1px;
+                height: 20px;
                 color: #fff;
-                background: #fff;
+                background: transparent;
                 opacity: 1;
                 border-radius: 0;
+                position: relative;
+                &:after {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background: #fff;
+                    position: absolute;
+                    bottom: 0;
+                }
             }
             .swiper-pagination-bullet-active {
-                height: 2px; 
+                &:after {
+                    height: 2px;
+                }
             }
         }
     }
@@ -1595,6 +1635,10 @@ p.entry-meta {
     margin-bottom: 40px;
     float: left;
     width: 100%;
+    #map {
+        height: 370px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+    }
     .container-pitch {
         height: 370px;
         background-size: cover;
@@ -1611,19 +1655,35 @@ p.entry-meta {
             }
         }
         a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: #fff;
+            position: absolute;
+            height: 100%;
+        }
+        .pitch-btn {
             padding: 10px 35px;
             text-transform: uppercase;
             font-size: 14px;
             font-weight: 600;
-            color: #e8050b;
-            border: 3px solid #e8050b;
+            color: #fff;
+            border: 3px solid #fff;
+            background: #fff;
+            color: #333;
             text-decoration: none;
             &:hover {
                 background: #e8050b;
+                border: 3px solid #e8050b;
                 color: #fff;
             }
         }
     }
+    
+}
+
+.get-directions {
+    display: none;
 }
 
 .section-instagram {
@@ -1680,9 +1740,20 @@ p.entry-meta {
 
 .inner-banner {
     padding: 75px 0;
+    background-image: url('../images/entrance.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        top: 0;
+        left: 0;
+    }
     .entry-title {
         text-transform: uppercase;
         font-size: 60px;
@@ -1690,6 +1761,8 @@ p.entry-meta {
         color: #fff;
         margin: 0;
         padding: 0;
+        position: relative;
+        z-index: 999;
     }
 }
 
@@ -1837,6 +1910,12 @@ p.entry-meta {
         .content {
 //            padding-bottom: 15px;
         }
+        .zoning-image {
+            height: 15px;
+            width: auto;
+            margin: 0;
+            padding: 0;
+        }
     }
 }
 
@@ -1859,13 +1938,22 @@ p.entry-meta {
         }
     }
     
+    .switch-right {
+        .one-half.first {
+            float: right;
+        }
+        .one-half {
+            margin-left: 0;
+        }
+    }
+    
     .pitch-image, .pitch-content {
         margin: 0 auto;
         position: relative;
         overflow: hidden;
         list-style: none;
         padding: 0;
-    z-index: 1;
+        z-index: 1;
     }
     .inquiry-form {
         display: inline-block;
@@ -1883,23 +1971,45 @@ p.entry-meta {
             }
         }
     }
+    .swiper-slide {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
     .swiper-pagination {
             text-align: left;
             padding-left: 35px;
             bottom: 30px;
             .swiper-pagination-bullet {
                 width: 30px;
-                height: 1px;
+                height: 20px;
                 color: #fff;
-                background: #fff;
+                background: transparent;
                 opacity: 1;
                 border-radius: 0;
+                position: relative;
+                &:after {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background: #fff;
+                    position: absolute;
+                    bottom: 0;
+                }
             }
             .swiper-pagination-bullet-active {
-                height: 2px; 
+                &:after {
+                    height: 2px;
+                }
             }
         }
     
+}
+
+.submiting_content.wpdev-help-message.alert.alert-warning.alert-success {
+    width: 100%;
+    display: inline-block;
 }
 
 .content-sidebar-content {
@@ -1951,6 +2061,7 @@ p.entry-meta {
         background: #fff;
         font-size: 24px;
         padding: 31px;
+        margin: 0;
         &:hover {
             background: #e8050b;
             color: #fff;
@@ -2007,8 +2118,10 @@ p.entry-meta {
         }
         .text {
             display: inline-block;
-            span {
+            span, a {
                 display: table;
+                text-decoration: none;
+                color: #333;
             }
         }
     }
@@ -2020,13 +2133,35 @@ p.entry-meta {
             margin-right: 15px;
         }
         a {
-            color: #333;
+            color: #e8050b;
             font-weight: 600;
+            padding: 20px 35px;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            border: 3px solid #e8050b;
+            text-decoration: none;
+            margin-top: 10px;
+            display: table;
             &:hover {
-                color: #e8050b;
-                text-decoration: underline;
+                color: #fff;
+                background: #e8050b;
+                text-decoration: none;
+                i {
+                    color: #fff;
+                }
             }
         }
+    }
+    .contact-note {
+        font-size: 14px;
+        font-style: italic;
+        color: #999;
+        display: block;
+        width: 100%;
+        float: left;
+        margin-bottom: 30px;
+        text-align: left;
     }
     
 }
@@ -2037,178 +2172,361 @@ p.entry-meta {
         font-size: 18px;
         margin-bottom: 30px;
     }
+    #map {
+        width: 100%;
+        height: 250px;
+        margin-bottom: 30px;
+    }
 }
 
-.booking_form_div {
+//.booking_form_div {
+//    display: inline-block;
+//    width: 100%;
+//    margin-top: 80px;
+//    .wpbc_structure_calendar {
+////        padding: 20px;
+////        background: #fff;
+////        border: 1px solid #ccc;
+//        margin-right: 0 !important;
+//        padding: 40px 0 0 40px;
+//        .block_hints.datepick {
+//            height: auto;
+//        }
+//        .block_check_in_out, .block_pending, .block_time, .block_booked, .block_free {
+//            height: 11px;
+//            width: 11px;
+//            border: 0;
+//        }
+//        .block_text {
+//            line-height: 12px;
+//            height: auto;
+//            padding: 0 10px 0 15px;
+//        }
+//        .block_free {
+//            background: #e7e7e7;
+//        }
+//        .wpdev_hint_with_text {
+//            margin-right: 20px;
+//        }
+//    }
+//    
+//    .wpbc_structure_form {
+//        border: 1px solid #ccc;
+//        width: 100%;
+//        .first-column-form {
+//            background: #ebebeb;
+//            padding: 85px 75px;
+//            float: left;
+//            width: 50%;
+//            input[type="text"] {
+//                border-radius: 0;
+//                width: 100%;
+//                height: 45px;
+//                box-sizing: border-box;
+//                padding: 2px 15px;
+//                border: 1px solid #ccc;
+//            }
+//            .form-group {
+//                margin-top: 0;
+//            }
+//        }
+//        label {
+//            font-size: 14px;
+//            font-weight: 400;
+//            color: #777;
+//        }
+//        select {
+//            border-radius: 0;
+//            -webkit-appearance: none;
+//            appearance: none;
+//            -moz-appearance: none;
+//            
+//        }
+//        .second-column-form {
+//            display: inline-block;
+//            float: left;
+//            width: 200px;
+//            padding-top: 35px;
+//            select {
+//                box-sizing: border-box;
+//                width: 100% !important;
+//                border: 0;
+//                padding-right: 15px;
+//            }
+//            .form-group {
+//                display: inline-block;
+//                width: 100%;
+//                border-bottom: 1px solid #f1f1f1;
+//                margin: 5px 0 0;
+//                label, .controls {
+//                    display: inline-block;
+//                }
+//                .controls {
+//                    float: right;
+//                    position: relative;
+//                    &:after {
+//                        content:"\f107";
+//                        font-family: FontAwesome;
+//                        color: #777;
+//                        position: absolute; right: 0; top: 2px;
+//                        z-index: 1;
+//                        text-align: center;     
+//                        pointer-events: none;
+//                        box-sizing: border-box;   
+//                    }
+//                }
+//            }
+//            .addon-title {
+//                font-size: 16px;
+//                font-weight: 500;
+//                color: #777;
+//            }
+//        }
+//        .third-column-form {
+//            display: inline-block;
+//            padding-left: 40px;
+//            padding-right: 40px;
+//            clear: both;
+//            width: 50%;
+//            .form-group {
+//                &:first-child, &:last-child {
+//                    float: left;
+//                    display: inline-block;
+//                    input, select {
+//                        box-sizing: border-box;
+//                        width: 200px;
+//                    }
+//                    select {
+//                        width: 295px;
+//                        height: 45px;
+//                    }
+//                    button {
+//                        width: 200px;
+//                        height: 45px;
+//                        border: 2px solid #e8050b;
+//                        color: #e8050b;
+//                        border-radius: 0;
+//                        background: #fff;
+//                        text-transform: uppercase;
+//                        font-weight: 700;
+//                        margin-top: 14px;
+//                        margin-left: 9px;
+//                        &:hover {
+//                            background: #e8050b;
+//                            color: #fff;
+//                        }
+//                    }
+//                }
+//                .controls {
+////                    float: right;
+//                    position: relative;
+//                    &:after {
+//                        content:"\f107";
+//                        font-family: FontAwesome;
+//                        color: #777;
+//                        right: 16px;
+//                        top: 12px;
+//                        position: absolute;
+//                        z-index: 1;
+//                        text-align: center;     
+//                        pointer-events: none;
+//                        box-sizing: border-box; 
+//                        background: #fff;
+//                    }
+//                }
+//            }
+//            input, select {
+//                box-sizing: border-box;
+//            }
+//        }
+//        p {
+//            width: 50%;
+//            float: right;
+//            text-align: center;
+//            font-size: 12px;
+//            color: #777;
+//            font-style: italic;
+//            line-height: 18px;
+//            padding: 0 70px;
+//        }
+//    }
+//}
+
+
+.booking-container {
     display: inline-block;
     width: 100%;
     margin-top: 80px;
+    border: 1px solid #ccc;
+    color: #777;
+    .booking-details, .booking-info {
+        margin: 0;
+        padding: 0;
+        width: 50%;
+        float: left;
+    }
+    
+    .booking-details{
+        background: #ebebeb;
+        padding: 117px 75px;
+        p {
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            border-radius: 0;
+            width: 100%;
+            height: 45px;
+            box-sizing: border-box;
+            padding: 2px 15px;
+            border: 1px solid #ccc;
+        }
+    }
+    
+    .booking-info {
+        padding: 30px;
+        .booking-addon {
+            display: inline-block;
+            float: right;
+            width: 200px;
+            label {
+                font-weight: 400;
+                display: inline-block;
+                float: left;
+            }
+            span {
+                display: inline-block;
+                float: right;
+                width: 50%;
+                position: relative;
+                &:after {
+                    content: "\f107";
+                    font-family: FontAwesome;
+                    color: #777;
+                    position: absolute;
+                    right: 0;
+                    top: 2px;
+                    z-index: 1;
+                    text-align: center;
+                    pointer-events: none;
+                    box-sizing: border-box;
+                }
+            }
+            select {
+                box-sizing: border-box;
+                float: right;
+                border: 0;
+                padding-right: 15px;
+                width: 50%;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+            p {
+                display: inline-block;
+                width: 100%;
+                border-bottom: 1px solid #f1f1f1;
+                margin-bottom: 0px;
+            }
+            .note-addon {
+                font-size: 16px;
+                font-weight: 500;
+                color: #777;
+                border: 0;
+            }
+        }
+    }
+    
     .wpbc_structure_calendar {
-//        padding: 20px;
-//        background: #fff;
-//        border: 1px solid #ccc;
-        margin-right: 0 !important;
-        padding: 40px 0 0 40px;
         .block_hints.datepick {
             height: auto;
         }
         .block_check_in_out, .block_pending, .block_time, .block_booked, .block_free {
-            height: 11px;
-            width: 11px;
+            height: 20px;
+            width: 20px;
             border: 0;
         }
         .block_text {
-            line-height: 12px;
+            line-height: 20px;
             height: auto;
-            padding: 0 10px 0 15px;
+            padding: 0 10px 0 25px;
         }
         .block_free {
             background: #e7e7e7;
         }
         .wpdev_hint_with_text {
-            margin-right: 20px;
+            margin-bottom: 0px;
+            width: 50%;
         }
     }
     
-    .wpbc_structure_form {
-        border: 1px solid #ccc;
+    .time-submit {
+        display: inline-block;
         width: 100%;
-        .first-column-form {
-            background: #ebebeb;
-            padding: 85px 75px;
-            float: left;
-            width: 50%;
-            input[type="text"] {
+        margin-top: 20px;
+        .time-select {
+            select {
                 border-radius: 0;
-                width: 100%;
+                -webkit-appearance: none;
+                appearance: none;
+                -moz-appearance: none;
                 height: 45px;
                 box-sizing: border-box;
-                padding: 2px 15px;
-                border: 1px solid #ccc;
             }
-            .form-group {
-                margin-top: 0;
-            }
-        }
-        label {
-            font-size: 14px;
-            font-weight: 400;
-            color: #777;
-        }
-        select {
-            border-radius: 0;
-            -webkit-appearance: none;
-            appearance: none;
-            -moz-appearance: none;
             
-        }
-        .second-column-form {
-            display: inline-block;
-            float: left;
-            width: 200px;
-            padding-top: 35px;
-            select {
-                box-sizing: border-box;
-                width: 100% !important;
-                border: 0;
-                padding-right: 15px;
-            }
-            .form-group {
-                display: inline-block;
-                width: 100%;
-                border-bottom: 1px solid #f1f1f1;
-                margin: 5px 0 0;
-                label, .controls {
-                    display: inline-block;
+            span {
+                position: relative;
+                &:after {
+                    content: "\f107";
+                    font-family: FontAwesome;
+                    color: #777;
+                    position: absolute;
+                    right: 15px;
+                    top: -2px;
+                    z-index: 1;
+                    text-align: center;
+                    pointer-events: none;
+                    box-sizing: border-box;
                 }
-                .controls {
-                    float: right;
-                    position: relative;
-                    &:after {
-                        content:"\f107";
-                        font-family: FontAwesome;
-                        color: #777;
-                        position: absolute; right: 0; top: 2px;
-                        z-index: 1;
-                        text-align: center;     
-                        pointer-events: none;
-                        box-sizing: border-box;   
-                    }
-                }
-            }
-            .addon-title {
-                font-size: 16px;
-                font-weight: 500;
-                color: #777;
             }
         }
-        .third-column-form {
-            display: inline-block;
-            padding-left: 40px;
-            padding-right: 40px;
-            clear: both;
-            width: 50%;
-            .form-group {
-                &:first-child, &:last-child {
-                    float: left;
-                    display: inline-block;
-                    input, select {
-                        box-sizing: border-box;
-                        width: 200px;
-                    }
-                    select {
-                        width: 295px;
-                        height: 45px;
-                    }
-                    button {
-                        width: 200px;
-                        height: 45px;
-                        border: 2px solid #e8050b;
-                        color: #e8050b;
-                        border-radius: 0;
-                        background: #fff;
-                        text-transform: uppercase;
-                        font-weight: 700;
-                        margin-top: 14px;
-                        margin-left: 9px;
-                        &:hover {
-                            background: #e8050b;
-                            color: #fff;
-                        }
-                    }
-                }
-                .controls {
-//                    float: right;
-                    position: relative;
-                    &:after {
-                        content:"\f107";
-                        font-family: FontAwesome;
-                        color: #777;
-                        right: 16px;
-                        top: 12px;
-                        position: absolute;
-                        z-index: 1;
-                        text-align: center;     
-                        pointer-events: none;
-                        box-sizing: border-box; 
-                        background: #fff;
-                    }
-                }
-            }
-            input, select {
-                box-sizing: border-box;
-            }
+        .one-half:nth-child(2) {
+            padding-left: 20px;
         }
-        p {
-            width: 50%;
-            float: right;
-            text-align: center;
+        .note-checkbox {
             font-size: 12px;
-            color: #777;
-            font-style: italic;
             line-height: 18px;
-            padding: 0 70px;
+            margin-top: 23px;
+            a {
+                color: #e8050b;
+            }
         }
+        input[type="button"] {
+            width: 100%;
+            height: 45px;
+            border: 2px solid #e8050b;
+            color: #e8050b;
+            border-radius: 0;
+            background: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 14px;
+            &:hover {
+                background: #e8050b;
+                color: #fff;
+            }
+        }
+    }
+    
+    .end-note {
+        display: inline-block;
+        text-align: center;
+        font-size: 12px;
+        color: #777;
+        font-style: italic;
+        line-height: 18px;
+        padding: 0 70px;
+        margin-bottom:0;
+        
     }
 }
 
@@ -2229,7 +2547,7 @@ p.entry-meta {
             display: inline-block;
             width: 100%;
             position: relative;
-            height: 240px;
+            height: auto;
             overflow: hidden;
         }
         .featured-image {
@@ -2239,12 +2557,17 @@ p.entry-meta {
             text-align: center;
             overflow: hidden;
             background: #fff;
+            position: absolute;
+            height: 100%;
+            .image-wrap {
+                height: 100%;
+            }
         }
         .detail-wrap {
             width: 50%;
             display: inline-block;
             float: right;
-            padding-top: 40px;
+            padding: 40px 0 50px;
             i {
                 font-family: 'FontAwesome';
                 font-style: normal;
@@ -2260,6 +2583,7 @@ p.entry-meta {
             }
             ul {
                 margin-left: 30px;
+                margin-bottom: 0;
                 li {
                     list-style-type: none;
                     line-height: 26px;
@@ -2269,7 +2593,7 @@ p.entry-meta {
         .featured-name {
             height: 100%;
             position: absolute;
-            width: 50%;
+            width: 100%;
             left: 0;
             background: #fff;
             display: table-cell;
@@ -2287,6 +2611,14 @@ p.entry-meta {
             }
         }
     }
+    .shop-results {
+        .image-wrap {
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
     &.layout-list {
         article {
             width: 100%;
@@ -2300,6 +2632,8 @@ p.entry-meta {
         .article-wrap {
             background: #fff;
             height: auto;
+            position: relative;
+            min-height: 275px;
         }
         .featured-image {
             width: 50%;
@@ -2308,7 +2642,8 @@ p.entry-meta {
             text-align: center;
             overflow: hidden;
             background: #fff;
-            height: 255px;
+            height: 100%;
+            position: absolute;
             a {
                 width: 100%;
                 height: 100%;
@@ -2383,6 +2718,17 @@ p.entry-meta {
                 margin-bottom: 40px;
             }
         }
+    }
+}
+
+.single-promos_and_events {
+    .entry-meta {
+        margin-bottom: 30px;
+        font-size: 14px;
+        color: #777;
+    }
+    .inner-banner .entry-title {
+        font-size: 40px;
     }
 }
 
@@ -2577,14 +2923,24 @@ p.entry-meta {
 
 .footer-widgets-4 {
     text-align: right;
-    .widget_media_image {
+//    .widget_media_image {
         img {
             width: 250px;
             height: auto;
         }
-    }
+//    }
     font-size: 12px;
     font-size: 1.2rem;
+}
+
+#aboitizNote {
+    .aboitiz-note-wrap {
+        width: 100%;
+        max-width: 700px;
+        background: #fff;
+        padding: 30px 30px;
+        margin: 0 auto;
+    }
 }
 
 
@@ -2652,177 +3008,12 @@ p.entry-meta {
                 width: 700px;
             }
         }
-    }
-    
-    .booking_form_div {
-        display: inline-block;
-        width: 100%;
-        margin-top: 30px;
-        .wpbc_structure_calendar {
-    //        padding: 20px;
-    //        background: #fff;
-    //        border: 1px solid #ccc;
-            margin-right: 0 !important;
-            padding: 40px 0 0 40px;
-            .block_hints.datepick {
-                height: auto;
-            }
-            .block_check_in_out, .block_pending, .block_time, .block_booked, .block_free {
-                height: 11px;
-                width: 11px;
-                border: 0;
-            }
-            .block_text {
-                line-height: 12px;
-                height: auto;
-                padding: 0 10px 0 15px;
-            }
-            .block_free {
-                background: #e7e7e7;
-            }
-            .wpdev_hint_with_text {
-                margin-right: 20px;
-            }
-        }
-
-        .wpbc_structure_form {
-            border: 1px solid #ccc;
-            width: 100%;
-            .first-column-form {
-                background: #ebebeb;
-                padding: 85px 75px;
-                float: left;
-                width: 50%;
-                input[type="text"] {
-                    border-radius: 0;
-                    width: 100%;
-                    height: 45px;
-                    box-sizing: border-box;
-                    padding: 2px 15px;
-                    border: 1px solid #ccc;
+        &.filter-dine {
+            .search-container {
+                width: 1020px;
+                input[type="search"] {
+                    width: 940px;
                 }
-                .form-group {
-                    margin-top: 0;
-                }
-            }
-            label {
-                font-size: 14px;
-                font-weight: 400;
-                color: #777;
-            }
-            select {
-                border-radius: 0;
-                -webkit-appearance: none;
-                appearance: none;
-                -moz-appearance: none;
-
-            }
-            .second-column-form {
-                display: inline-block;
-                float: left;
-                width: 200px;
-                padding-top: 35px;
-                select {
-                    box-sizing: border-box;
-                    width: 100% !important;
-                    border: 0;
-                    padding-right: 15px;
-                }
-                .form-group {
-                    display: inline-block;
-                    width: 100%;
-                    border-bottom: 1px solid #f1f1f1;
-                    margin: 5px 0 0;
-                    label, .controls {
-                        display: inline-block;
-                    }
-                    .controls {
-                        float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            position: absolute; right: 0; top: 2px;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box;   
-                        }
-                    }
-                }
-                .addon-title {
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: #777;
-                }
-            }
-            .third-column-form {
-                display: inline-block;
-                padding-left: 40px;
-                padding-right: 40px;
-                clear: both;
-                width: 50%;
-                .form-group {
-                    &:first-child, &:last-child {
-                        float: left;
-                        display: inline-block;
-                        input, select {
-                            box-sizing: border-box;
-                            width: 200px;
-                        }
-                        select {
-                            width: 280px;
-                            height: 45px;
-                        }
-                        button {
-                            width: 200px;
-                            height: 45px;
-                            border: 2px solid #e8050b;
-                            color: #e8050b;
-                            border-radius: 0;
-                            background: #fff;
-                            text-transform: uppercase;
-                            font-weight: 700;
-                            margin-top: 14px;
-                            margin-left: 9px;
-                            &:hover {
-                                background: #e8050b;
-                                color: #fff;
-                            }
-                        }
-                    }
-                    .controls {
-    //                    float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            right: 16px;
-                            top: 12px;
-                            position: absolute;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box; 
-                            background: #fff;
-                        }
-                    }
-                }
-                input, select {
-                    box-sizing: border-box;
-                }
-            }
-            p {
-                width: 50%;
-                float: right;
-                text-align: center;
-                font-size: 12px;
-                color: #777;
-                font-style: italic;
-                line-height: 18px;
-                padding: 0 70px;
             }
         }
     }
@@ -2882,6 +3073,14 @@ p.entry-meta {
                 width: 520px;
             }
         }
+        &.filter-dine {
+            .search-container {
+                width: 840px;
+                input[type="search"] {
+                    width: 760px;
+                }
+            }
+        }
     }
     
     .section-query {
@@ -2897,175 +3096,34 @@ p.entry-meta {
         padding: 0 0 0 30px;
     }
     
-    .booking_form_div {
-        display: inline-block;
-        width: 100%;
-        margin-top: 30px;
-        .wpbc_structure_calendar {
-    //        padding: 20px;
-    //        background: #fff;
-    //        border: 1px solid #ccc;
-            margin-right: 0 !important;
-            padding: 40px 0 0 40px;
-            .block_hints.datepick {
-                height: auto;
-            }
-            .block_check_in_out, .block_pending, .block_time, .block_booked, .block_free {
-                height: 11px;
-                width: 11px;
-                border: 0;
-            }
-            .block_text {
-                line-height: 12px;
-                height: auto;
-                padding: 0 10px 0 15px;
-            }
-            .block_free {
-                background: #e7e7e7;
-            }
-            .wpdev_hint_with_text {
-                margin-right: 20px;
+    .booking-container {
+        .booking-details, .booking-info {
+            width: 100%;
+        }
+        .booking-details {
+            padding: 50px;
+            p {
+                margin-bottom: 10px;
             }
         }
-
-        .wpbc_structure_form {
-            border: 1px solid #ccc;
-            width: 100%;
-            .first-column-form {
-                background: #ebebeb;
-                padding: 85px 75px;
-                float: left;
-                width: 100%;
-                input[type="text"] {
-                    border-radius: 0;
-                    width: 100%;
-                    height: 45px;
-                    box-sizing: border-box;
-                    padding: 2px 15px;
-                    border: 1px solid #ccc;
-                }
-                .form-group {
-                    margin-top: 0;
-                }
+        .booking-info {
+            .booking-addon {
+                width: 48.717948717948715%;
             }
-            label {
-                font-size: 14px;
-                font-weight: 400;
-                color: #777;
+        }
+        .wpbc_structure_calendar {
+            .bk_calendar_frame {
+                width: 100% !important;
             }
-            select {
-                border-radius: 0;
-                -webkit-appearance: none;
-                appearance: none;
-                -moz-appearance: none;
-
-            }
-            .second-column-form {
-                display: inline-block;
-                float: left;
-                width: 200px;
-                padding-top: 35px;
+        }
+        .time-submit {
+            .time-select {
                 select {
-                    box-sizing: border-box;
-                    width: 100% !important;
-                    border: 0;
-                    padding-right: 15px;
-                }
-                .form-group {
-                    display: inline-block;
                     width: 100%;
-                    border-bottom: 1px solid #f1f1f1;
-                    margin: 5px 0 0;
-                    label, .controls {
-                        display: inline-block;
-                    }
-                    .controls {
-                        float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            position: absolute; right: 0; top: 2px;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box;   
-                        }
-                    }
-                }
-                .addon-title {
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: #777;
                 }
             }
-            .third-column-form {
-                display: inline-block;
-                padding-left: 40px;
-                padding-right: 40px;
-                clear: both;
-                width: 100%;
-                .form-group {
-                    &:first-child, &:last-child {
-                        float: left;
-                        display: inline-block;
-                        input, select {
-                            box-sizing: border-box;
-                            width: 200px;
-                        }
-                        select {
-                            width: 280px;
-                            height: 45px;
-                        }
-                        button {
-                            width: 200px;
-                            height: 45px;
-                            border: 2px solid #e8050b;
-                            color: #e8050b;
-                            border-radius: 0;
-                            background: #fff;
-                            text-transform: uppercase;
-                            font-weight: 700;
-                            margin-top: 14px;
-                            margin-left: 9px;
-                            &:hover {
-                                background: #e8050b;
-                                color: #fff;
-                            }
-                        }
-                    }
-                    .controls {
-    //                    float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            right: 16px;
-                            top: 12px;
-                            position: absolute;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box; 
-                            background: #fff;
-                        }
-                    }
-                }
-                input, select {
-                    box-sizing: border-box;
-                }
-            }
-            p {
-                width: 100%;
-                float: right;
-                text-align: left;
-                font-size: 12px;
-                color: #777;
-                font-style: italic;
-                line-height: 18px;
-                padding: 0 40px;
+            .note-checkbox {
+                margin-bottom: 30px;
             }
         }
     }
@@ -3344,6 +3402,7 @@ p.entry-meta {
             margin-top: 40px;
         }
         .google-maps {
+            
             iframe {
                 width: 100%;
             }
@@ -3373,6 +3432,43 @@ p.entry-meta {
         }
     }
     
+    .section-filter {
+        .search-container {
+            width: 100%;
+            position: relative;
+            input[type="search"] {
+                width: 100%;
+            }
+            input[type="submit"] {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+        .select-category {
+            width: 100%;
+            margin-top: 20px;
+            select {
+                width: 100%;
+                border-left: 1px solid #ccc;
+            }
+        }
+        .layout-change {
+            display: none;
+        }
+        &.filter-dine {
+            .search-container {
+                width: 100%;
+                input[type="search"] {
+                    width: 100%;
+                }
+                input[type="submit"] {
+
+                }
+            }
+        }
+    }
+    
     .footer-widgets-1,
 	.footer-widgets-2 {
 		width: 50%;
@@ -3386,6 +3482,23 @@ p.entry-meta {
         text-align: left;
     }
 
+    
+    
+    
+    .section-query.query-promos .modal-image {
+        width: 100%;
+        position: relative;
+    }
+    
+    .section-query.query-promos .modal-body {
+        width: 100%;
+        max-height: none;
+        background: #fff;
+    }
+    
+    .section-query.query-promos .image-wrap {
+        height: 350px;
+    }
 
 }
 
@@ -3501,199 +3614,79 @@ p.entry-meta {
         }
     }
     
+    .shop-results {
+        .entry {
+            padding: 0;
+        }
+    }
+    
+    .section-query {
+        &.layout-list {
+            article {
+                width: 100%;
+                &.even {
+                    padding-left: 0;
+                }
+            }
+        }
+        &.layout-thumb {
+            article {
+                width: 100%;
+                &.even {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+    
     .page-template-page_pitch {
         .pitch-image {
             margin-bottom: 30px;
         }
     }
-
-}
-
-@media only screen and (max-width: 780px) {
     
-    .booking_form_div {
-        display: inline-block;
-        width: 100%;
-        margin-top: 30px;
-        .wpbc_structure_calendar {
-    //        padding: 20px;
-    //        background: #fff;
-    //        border: 1px solid #ccc;
-            margin-right: 0 !important;
-            padding: 40px 40px 0 40px;
-            .block_hints.datepick {
-                height: auto;
-            }
-            .block_check_in_out, .block_pending, .block_time, .block_booked, .block_free {
-                height: 11px;
-                width: 11px;
-                border: 0;
-            }
-            .block_text {
-                line-height: 12px;
-                height: auto;
-                padding: 0 10px 0 15px;
-            }
-            .block_free {
-                background: #e7e7e7;
-            }
-            .wpdev_hint_with_text {
-                margin-right: 20px;
+    .zoning-map {
+        .one-third {
+            margin-top: 30px;
+        }
+    }
+    
+    .booking-container {
+        .booking-info {
+            .booking-addon {
+                width: 100%;
+                margin-top: 20px;
             }
         }
-
-        .wpbc_structure_form {
-            border: 1px solid #ccc;
-            width: 100%;
-            display: inline-block;
-            padding-bottom: 30px;
-            .bk_calendar_frame {
-                display: inline-block;
-                width: 100% !important;
+        .time-submit {
+            .note-checkbox {
+                margin-bottom: 10px;
+                text-align: center;
             }
-            .first-column-form {
-                background: #ebebeb;
-                padding: 85px 75px;
-                float: left;
-                width: 100%;
-                margin-bottom: 40px;
-                input[type="text"] {
-                    border-radius: 0;
-                    width: 100%;
-                    height: 45px;
-                    box-sizing: border-box;
-                    padding: 2px 15px;
-                    border: 1px solid #ccc;
-                }
-                .form-group {
-                    margin-top: 0;
-                }
-            }
-            label {
-                font-size: 14px;
-                font-weight: 400;
-                color: #777;
-            }
-            select {
-                border-radius: 0;
-                -webkit-appearance: none;
-                appearance: none;
-                -moz-appearance: none;
-
-            }
-            .second-column-form {
-                display: inline-block;
-                float: left;
-                width: 100%;
-                padding-top: 35px;
-                padding-left: 40px;
-                padding-right: 40px;
-                select {
-                    box-sizing: border-box;
-                    width: 100% !important;
-                    border: 0;
-                    padding-right: 15px;
-                }
-                .form-group {
-                    display: inline-block;
-                    width: 100%;
-                    border-bottom: 1px solid #f1f1f1;
-                    margin: 5px 0 0;
-                    label, .controls {
-                        display: inline-block;
-                    }
-                    .controls {
-                        float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            position: absolute; right: 0; top: 2px;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box;   
-                        }
-                    }
-                }
-                .addon-title {
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: #777;
-                }
-            }
-            .third-column-form {
-                display: inline-block;
-                padding-left: 40px;
-                padding-right: 40px;
-                clear: both;
-                width: 100%;
-                .form-group {
-                    width: 100%;
-                    &:first-child, &:last-child {
-                        float: left;
-                        display: inline-block;
-                        input, select {
-                            box-sizing: border-box;
-                            width: 100%;
-                        }
-                        select {
-                            width: 100%;
-                            height: 45px;
-                        }
-                        button {
-                            width: 100%;
-                            height: 45px;
-                            border: 2px solid #e8050b;
-                            color: #e8050b;
-                            border-radius: 0;
-                            background: #fff;
-                            text-transform: uppercase;
-                            font-weight: 700;
-                            margin-top: 14px;
-                            margin-left: 0px;
-                            &:hover {
-                                background: #e8050b;
-                                color: #fff;
-                            }
-                        }
-                    }
-                    .controls {
-    //                    float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            right: 16px;
-                            top: 12px;
-                            position: absolute;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box; 
-                            background: #fff;
-                        }
-                    }
-                }
-                input, select {
-                    box-sizing: border-box;
-                }
-            }
-            p {
-                width: 100%;
-                float: right;
-                text-align: left;
-                font-size: 12px;
-                color: #777;
-                font-style: italic;
-                line-height: 18px;
-                padding: 0 40px;
+            .one-half:nth-child(2){
+                padding: 0;
             }
         }
     }
 
+}
+
+@media only screen and (max-width: 768px) {
+    
+    .booking-container {
+        .time-submit {
+            input[type="button"] {
+                width: 100% !important;
+            }
+        }
+        .booking-info {
+            .booking-addon {
+                select{
+                    width: 50% !important; 
+                }
+            }
+        }
+    }
     
 }
 
@@ -3757,10 +3750,18 @@ p.entry-meta {
             }
             .featured-image {
                 width: 100%;
+                position: relative;
+                height: 250px;
             }
             .detail-wrap {
                 width: 100%;
             }
+        }
+    }
+    
+    .inner-banner {
+        .entry-title {
+            font-size: 50px;
         }
     }
     
@@ -3777,190 +3778,59 @@ p.entry-meta {
         text-align: left;
     }
     
+    .section-instagram .sbi_owl-carousel .sbi_owl-item {
+        margin-right: 0;
+    }
+    
+    .booking-container {
+        .time-submit {
+            .note-checkbox {
+                text-align: left;
+            }
+        }
+        .end-note {
+            padding: 0;
+        }
+    }
+    
+//    .section-pitch-map {
+        .get-directions {
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 20px;
+            border: 2px solid #e8050b;
+            color: #e8050b;
+            &:hover, &:focus {
+                outline: 0;
+                background: #e8050b;
+                color: #fff;
+            }
+        }
+//    }
+    
+}
+
+@media only screen and (max-width: 640px) {
+    
+    .header-image .title-area {
+        padding: 12px 15px 12px 0;
+        max-width: 160px;
+    }
     
 }
 
 @media only screen and (max-width: 480px) {
-    .booking_form_div {
-        display: inline-block;
-        width: 100%;
-        margin-top: 30px;
-        .wpbc_structure_calendar {
-    //        padding: 20px;
-    //        background: #fff;
-    //        border: 1px solid #ccc;
-            margin-right: 0 !important;
-            padding: 40px 40px 0 40px;
-            .block_hints.datepick {
-                height: auto;
-            }
-            .block_check_in_out, .block_pending, .block_time, .block_booked, .block_free {
-                height: 11px;
-                width: 11px;
-                border: 0;
-            }
-            .block_text {
-                line-height: 12px;
-                height: auto;
-                padding: 0 10px 0 15px;
-            }
-            .block_free {
-                background: #e7e7e7;
-            }
-            .wpdev_hint_with_text {
-                margin-right: 20px;
-            }
-        }
-
-        .wpbc_structure_form {
-            border: 1px solid #ccc;
-            width: 100%;
-            display: inline-block;
-            padding-bottom: 30px;
-            .bk_calendar_frame {
-                display: inline-block;
-                width: 100% !important;
-            }
-            .first-column-form {
-                background: #ebebeb;
-                padding: 40px 30px;
-                float: left;
-                width: 100%;
-                margin-bottom: 40px;
-                input[type="text"] {
-                    border-radius: 0;
-                    width: 100%;
-                    height: 45px;
-                    box-sizing: border-box;
-                    padding: 2px 15px;
-                    border: 1px solid #ccc;
-                }
-                .form-group {
-                    margin-top: 0;
-                }
-            }
-            label {
-                font-size: 14px;
-                font-weight: 400;
-                color: #777;
-            }
-            select {
-                border-radius: 0;
-                -webkit-appearance: none;
-                appearance: none;
-                -moz-appearance: none;
-
-            }
-            .second-column-form {
-                display: inline-block;
-                float: left;
-                width: 100%;
-                padding-top: 35px;
-                padding-left: 40px;
-                padding-right: 40px;
-                select {
-                    box-sizing: border-box;
-                    width: 100% !important;
-                    border: 0;
-                    padding-right: 15px;
-                }
-                .form-group {
-                    display: inline-block;
-                    width: 100%;
-                    border-bottom: 1px solid #f1f1f1;
-                    margin: 5px 0 0;
-                    label, .controls {
-                        display: inline-block;
-                    }
-                    .controls {
-                        float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            position: absolute; right: 0; top: 2px;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box;   
-                        }
-                    }
-                }
-                .addon-title {
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: #777;
-                }
-            }
-            .third-column-form {
-                display: inline-block;
-                padding-left: 40px;
-                padding-right: 40px;
-                clear: both;
-                width: 100%;
-                .form-group {
-                    width: 100%;
-                    &:first-child, &:last-child {
-                        float: left;
-                        display: inline-block;
-                        input, select {
-                            box-sizing: border-box;
-                            width: 100%;
-                        }
-                        select {
-                            width: 100%;
-                            height: 45px;
-                        }
-                        button {
-                            width: 100%;
-                            height: 45px;
-                            border: 2px solid #e8050b;
-                            color: #e8050b;
-                            border-radius: 0;
-                            background: #fff;
-                            text-transform: uppercase;
-                            font-weight: 700;
-                            margin-top: 14px;
-                            margin-left: 0px;
-                            &:hover {
-                                background: #e8050b;
-                                color: #fff;
-                            }
-                        }
-                    }
-                    .controls {
-    //                    float: right;
-                        position: relative;
-                        &:after {
-                            content:"\f107";
-                            font-family: FontAwesome;
-                            color: #777;
-                            right: 16px;
-                            top: 12px;
-                            position: absolute;
-                            z-index: 1;
-                            text-align: center;     
-                            pointer-events: none;
-                            box-sizing: border-box; 
-                            background: #fff;
-                        }
-                    }
-                }
-                input, select {
-                    box-sizing: border-box;
-                }
-            }
-            p {
-                width: 100%;
-                float: right;
-                text-align: left;
-                font-size: 12px;
-                color: #777;
-                font-style: italic;
-                line-height: 18px;
-                padding: 0 40px;
-            }
+    
+    
+    .inner-banner {
+        padding: 50px 0;
+        .entry-title {
+            font-size: 50px;
         }
     }
 }
@@ -3969,6 +3839,19 @@ p.entry-meta {
     .content-tabs .tabs .tab-link {
         height: 60px;
         line-height: 18px;
+    }
+    .section-query {
+        article {
+            height: auto;
+            .featured-image {
+                width: 100%;
+                position: relative;
+                height: 250px;
+            }
+            .detail-wrap {
+                width: 100%;
+            }
+        }
     }
 }
 

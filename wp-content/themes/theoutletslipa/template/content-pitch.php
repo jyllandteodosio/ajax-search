@@ -1,4 +1,8 @@
-<div class="pitch-slider">
+<div class="pitch-slider <?php if(get_field('switch_layout')) { echo 'switch-right'; } ?>">
+    
+    <?php if(get_field('switch_layout')) { ?>
+<!--        test-->
+    <?php } ?>
     
     <div class="one-half first">
         <div class="pitch-image">

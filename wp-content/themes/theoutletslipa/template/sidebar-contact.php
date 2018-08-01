@@ -6,7 +6,11 @@
             <?php $count = 0; while( have_rows('details') ): the_row(); ?>
 
                 <div class="details">
-                    <div class="text"><?php echo get_sub_field('icon'); ?><span><?php echo get_sub_field('text'); ?></span></div>
+                    <div class="text"><?php echo get_sub_field('icon'); ?>
+                        <?php if (get_sub_field('link')) {?><a href="<?php echo get_sub_field('link'); ?>"><?php } ?>
+                        <span><?php echo get_sub_field('text'); ?></span>
+                        <?php if (get_sub_field('link')) {?></a><?php } ?>
+                    </div>
                 </div>
 
             <?php $count++; endwhile; ?>

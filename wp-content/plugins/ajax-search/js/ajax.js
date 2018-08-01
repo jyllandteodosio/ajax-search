@@ -14,7 +14,6 @@ jQuery(function($){
         };
     };
     
-<<<<<<< HEAD
     var base_url = location.hostname !== 'localhost' ? location.hostname : 'http://localhost:8888/theoutletslipa';
     
     if(location.hostname != 'localhost') {

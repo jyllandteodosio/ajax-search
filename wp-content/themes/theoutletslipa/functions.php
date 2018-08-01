@@ -64,6 +64,9 @@ function genesis_sample_enqueue_scripts_styles() {
 	wp_enqueue_script( 'swiper-js', "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js", array( 'jquery' ), CHILD_THEME_VERSION, true );
 	wp_enqueue_script( 'centerimage', get_stylesheet_directory_uri() . "/js/jquery.blImageCenter.js", array( 'jquery' ), CHILD_THEME_VERSION, true );
 	wp_enqueue_script( 'mainjs', get_stylesheet_directory_uri() . "/js/main.js", array( 'jquery' ), CHILD_THEME_VERSION, true );
+    if(is_page('aboitiz-pitch')) {
+	   wp_enqueue_script( 'innerjs', get_stylesheet_directory_uri() . "/js/innerslider.js", array( 'jquery' ), CHILD_THEME_VERSION, true );
+    }
 	wp_localize_script(
 		'genesis-sample-responsive-menu',
 		'genesis_responsive_menu',
@@ -74,9 +77,9 @@ function genesis_sample_enqueue_scripts_styles() {
 }
 
 function wpdocs_dequeue_script() {
-//    if(!is_page(12)) {
+    if(!is_admin()) {
         wp_dequeue_script( 'wpdevelop-bootstrap' );
-//    }
+    }
 }
 add_action( 'wp_print_scripts', 'wpdocs_dequeue_script', 100 );
 
@@ -193,7 +196,7 @@ add_filter( 'genesis_markup_content', '__return_null' );
 // Add Title Banner
 add_action( 'get_header', 'remove_titles_single_posts' );
 function remove_titles_single_posts() {
-    if ( !is_front_page() && !is_archive() ) {
+    if ( !is_front_page() && !is_archive() && !is_search()) {
         remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
         remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
         remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
@@ -202,7 +205,7 @@ function remove_titles_single_posts() {
 
 add_action( 'genesis_before_content_sidebar_wrap', 'add_banner' );
 function add_banner() {
-    if ( !is_front_page() && !is_archive()  ) {
+    if ( !is_front_page() && !is_archive() && !is_404() && !is_search()   ) {
         get_template_part('template/section', 'innerbanner'); 
     }
 }
@@ -226,7 +229,7 @@ genesis_register_sidebar( array(
 add_action( 'genesis_after_footer', 'add_genesis_widget_area' );
 function add_genesis_widget_area() {
     genesis_widget_area( 'search-widget', array(
-		'before' => '<div id="searchModal" class="modal fade search-widget widget-area"><div class="search-wrap">',
+		'before' => '<div id="searchModal" class="modal fade search-widget widget-area"><div class="search-wrap"><div class="close" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i></div>',
 		'after'  => '</div></div>',
     ) );
 
@@ -245,3 +248,20 @@ function search_function() {
     <?php
 }
 add_action( 'genesis_header', 'genesis_do_nav' );
+
+
+
+genesis_register_sidebar( array(
+    'id' => 'aboitiz-widget',
+    'name' => __( 'Aboitiz Note Widget', 'genesis' ),
+    'description' => __( 'Aboitiz Note', 'theoutlestlipa' ),
+) );
+
+add_action( 'genesis_after_footer', 'add_aboitiz_note' );
+function add_aboitiz_note() {
+    genesis_widget_area( 'aboitiz-widget', array(
+		'before' => '<div id="aboitizNote" class="modal fade search-widget widget-area"><div class="aboitiz-note-wrap"><div class="close" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i></div>',
+		'after'  => '</div></div>',
+    ) );
+
+}

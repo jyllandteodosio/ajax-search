@@ -53,9 +53,10 @@ function get_shops( $request ) {
         'post_type'         => 'outlets',
         'search_tax_query'  => true,
         's'                 => $search,
+        'order'             => 'ASC'
     );
     
-    if( $category != 'All' && $type == 'shops' ) {
+    if( $category != 'Categories' && $type == 'shops' ) {
         $args['tax_query'] = array(
             array(
                 'taxonomy'  => 'outlet_category',

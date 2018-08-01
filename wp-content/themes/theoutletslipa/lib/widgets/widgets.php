@@ -37,13 +37,13 @@ class widget_footer extends WP_Widget {
             <ul class="detail-list">
 
             <?php while( have_rows('detail', 'widget_' . $args['widget_id']) ): the_row(); 
-                    $link = get_sub_field('text', 'widget_' . $args['widget_id']);
+                    $link = get_sub_field('link', 'widget_' . $args['widget_id']);
                 ?>
 
                 <li class="detail">
                     <?php echo get_sub_field('icon', 'widget_' . $args['widget_id']); ?>
                     <?php if($link) { ?>
-                        <a href="<?php echo $link; ?>"> 
+                        <a href="<?php echo $link; ?>" target="<?php if (get_sub_field('open_in_new_tab')) { ?>_blank<?php } ?>"> 
                             <span><?php echo get_sub_field('text', 'widget_' . $args['widget_id']); ?></span>
                         </a> 
                     <?php } else { ?>

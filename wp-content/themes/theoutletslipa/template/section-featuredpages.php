@@ -6,15 +6,15 @@
             <?php while( have_rows('first_column') ): the_row(); ?>
 
                 <div class="swiper-slide" style="background-image:url('<?php echo get_sub_field('background')['url'];?>');">
-                    <a href="<?php echo get_sub_field('link'); ?>">
+                    
                         <div class="content-wrap">
-                            <span class="tag"><?php echo get_sub_field('tag'); ?></span>
-                            <h2 class="page-title"><?php echo get_sub_field('title'); ?></h2>
+                            <a href="<?php echo get_sub_field('tag_link'); ?>"><span class="tag"><?php echo get_sub_field('tag'); ?></span></a>
+                            <a href="<?php echo get_sub_field('link'); ?>"><h2 class="page-title"><?php echo get_sub_field('title'); ?></h2></a>
                             <?php if(get_sub_field('link_text')) { ?>
-                                <span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span>
+                                <a href="<?php echo get_sub_field('link'); ?>" class="view-page"><span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span></a>
                             <?php } ?>
                         </div>
-                    </a>
+                    
                 </div>
 
             <?php endwhile; ?>
@@ -31,15 +31,13 @@
             <?php while( have_rows('second_column') ): the_row(); ?>
 
                 <div class="swiper-slide" style="background-image:url('<?php echo get_sub_field('image')['url'];?>');">
-                    <a href="<?php echo get_sub_field('link'); ?>">
                         <div class="content-wrap">
-                            <span class="tag"><?php echo get_sub_field('tag'); ?></span>
-                            <h2 class="page-title"><?php echo get_sub_field('title'); ?></h2>
+                            <a href="<?php echo get_sub_field('tag_link'); ?>"><span class="tag"><?php echo get_sub_field('tag'); ?></span></a>
+                            <a href="<?php echo get_sub_field('link'); ?>"><h2 class="page-title"><?php echo get_sub_field('title'); ?></h2></a>
                             <?php if(get_sub_field('link_text')) { ?>
-                                <span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span>
+                                <a href="<?php echo get_sub_field('link'); ?>" class="view-page"><span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span></a>
                             <?php } ?>
                         </div>
-                    </a>
                 </div>
 
             <?php endwhile; ?>
@@ -56,15 +54,15 @@
             <?php while( have_rows('third_column') ): the_row(); ?>
 
                 <div class="swiper-slide" style="background-image:url('<?php echo get_sub_field('background')['url'];?>');">
-                    <a href="<?php echo get_sub_field('link'); ?>">
+                    
                         <div class="content-wrap">
-                            <span class="tag"><?php echo get_sub_field('tag'); ?></span>
-                            <h2 class="page-title"><?php echo get_sub_field('title'); ?></h2>
+                            <a href="<?php echo get_sub_field('tag_link'); ?>"><span class="tag"><?php echo get_sub_field('tag'); ?></span></a>
+                            <a href="<?php echo get_sub_field('link'); ?>"><h2 class="page-title"><?php echo get_sub_field('title'); ?></h2></a>
                             <?php if(get_sub_field('link_text')) { ?>
-                                <span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span>
+                                <a href="<?php echo get_sub_field('link'); ?>" class="view-page"><span class="link"><?php echo get_sub_field('link_text'); ?><i class="fas fa-angle-right"></i></span></a>
                             <?php } ?>
                         </div>
-                    </a>
+                    
                 </div>
 
             <?php endwhile; ?>
