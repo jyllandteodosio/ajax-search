@@ -133,6 +133,8 @@ add_theme_support( 'genesis-footer-widgets', 4 );
 
 // Add Image Sizes.
 add_image_size( 'featured-image', 720, 400, TRUE );
+add_image_size( 'banner-image', 1440, 250, TRUE );
+add_image_size( 'featured-image-preview', 480, 400, TRUE );
 
 // Rename primary and secondary navigation menus.
 add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis-sample' ), 'secondary' => __( 'Footer Menu', 'genesis-sample' ) ) );
@@ -205,8 +207,10 @@ function remove_titles_single_posts() {
 
 add_action( 'genesis_before_content_sidebar_wrap', 'add_banner' );
 function add_banner() {
-    if ( !is_front_page() && !is_archive() && !is_404() && !is_search()   ) {
+    if ( !is_front_page() && !is_archive() && !is_404() && !is_search() && !is_single()) {
         get_template_part('template/section', 'innerbanner'); 
+    } else if (is_single()) {
+        get_template_part('template/single', 'banner'); 
     }
 }
 

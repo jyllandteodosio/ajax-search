@@ -72,11 +72,11 @@ jQuery(function($){
             url: url,
             data: params,
             beforeSend: function loader() {
-                $('.layout-thumb .shop-results').text('');
-                $('.layout-thumb .shop-results').append('<div class="loader">Loading...</div>');
+                $('.query-outlet .shop-results').text('');
+                $('.query-outlet .shop-results').append('<div class="loader">Loading...</div>');
             },
             success: function(data, textStatus, jqXHR) {
-                $('.layout-thumb .shop-results').text('');
+                $('.query-outlet .shop-results').text('');
                 console.log(data);
 
                 if(data.shops.length > 0) {
@@ -125,7 +125,7 @@ jQuery(function($){
                                         +'</div>'
                                     +'</article>';
                         
-                        $('.layout-thumb .shop-results').append(shop);
+                        $('.query-outlet .shop-results').append(shop);
                     });
                     
                     if(data.max_num_pages > 1) {
@@ -142,10 +142,10 @@ jQuery(function($){
                         
                         var pagination = '<div class="pagination"><ul>'+page_links+'</ul></div>';
                         
-                        $('.layout-thumb .shop-results').append(pagination);
+                        $('.query-outlet .shop-results').append(pagination);
                     }
                 } else {
-                    $('.layout-thumb .shop-results').append('No shops found.');
+                    $('.query-outlet .shop-results').append('No shops found.');
                 }
             }
         });

@@ -1,4 +1,4 @@
-<div class="section-query layout-thumb query-shop">
+<div class="section-query layout-thumb query-shop query-outlet">
     
         <div class="wrap">
         <div class="section-filter filter-shop">
@@ -13,27 +13,30 @@
                 $args = array(
                     'show_option_all'    => 'Categories',
                     'show_option_none'   => '',
-                    'option_none_value'  => '-1',
-                    'orderby'            => 'ID',
                     'order'              => 'ASC',
                     'show_count'         => 0,
                     'hide_empty'         => 1,
-                    'child_of'           => 0,
                     'exclude'            => '5',
-                    'include'            => '',
-                    'echo'               => 1,
-                    'selected'           => 0,
-                    'hierarchical'       => 0,
-                    'name'               => 'cat',
-                    'id'                 => '',
-                    'class'              => 'postform',
-                    'depth'              => 0,
-                    'tab_index'          => 0,
                     'taxonomy'           => 'outlet_category',
                     'hide_if_empty'      => false,
                     'value_field'	     => 'term_id',
                 );
-                wp_dropdown_categories($args); 
+                echo '<select>';
+                  // Add custom option as default
+                  echo '<option>' . __('Categories', 'text-domain') . '</option>';
+                    
+                  // Get categories as array
+                  $categories = get_categories( $args );
+                  foreach ( $categories as $category ) :
+
+
+                    echo '<option>' . $category->name . '</option>';
+
+                  endforeach;
+
+                echo '</select>';
+                
+                
                 ?>
                 <!--select>
                     <option>Categories</option>

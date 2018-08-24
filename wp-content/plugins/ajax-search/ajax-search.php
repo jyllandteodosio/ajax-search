@@ -22,6 +22,7 @@ add_action( 'wp_enqueue_scripts', 'ajax_enqueue_scripts' );
 
 function ajax_enqueue_scripts() {
     wp_enqueue_script( 'ajax-search', plugin_dir_url( __FILE__ ) . 'js/ajax.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+    wp_enqueue_script( 'ajax-promo', plugin_dir_url( __FILE__ ) . 'js/ajax-promo.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 }
 
 // Setup custom routes
@@ -32,6 +33,17 @@ function register_routes() {
         array(
             'methods' => 'GET',
             'callback' => 'get_shops',
+        )
+    ) );
+}
+
+// Setup custom routes
+add_action( 'rest_api_init', 'register_routes_promos' );
+function register_routes_promos() {
+    register_rest_route( 'ajax-search/v1', '/promos-events/', array(
+        array(
+            'methods' => 'GET',
+            'callback' => 'get_promos',
         )
     ) );
 }
@@ -157,6 +169,102 @@ function get_shops( $request ) {
                 'phone'             => get_field('phone'),
                 'location'          => get_field('location'),
                 'tags'              => $tags,
+            );
+            
+            $count++;
+        }
+
+        wp_reset_postdata(); 
+    }
+    
+    return new WP_REST_Response( $data, 200 );
+}
+
+function get_promos( $request ) {
+    // Get the paramaters from the request
+    $params = $request->get_params();
+    $search = isset($params[ 'search' ]) ? $params[ 'search' ] : '';
+    $category = isset($params[ 'category' ]) ? $params[ 'category' ] : '';
+    $page = isset($params[ 'page' ]) ? $params[ 'page' ] : 1;
+    $type = isset($params[ 'type' ]) ? $params[ 'type' ] : '';
+    
+    $current_page = $page ? intval( $page ) : 1;
+    
+    $args = array(
+        'orderby'           => 'date', 
+        'posts_per_page'    => 10,
+        'paged'             => $current_page,
+        'post_type'         => 'promos_and_events',
+        'search_tax_query'  => true,
+        's'                 => $search,
+        'order'             => 'DESC'
+    );
+    
+    $query = new WP_Query( $args ); 
+    
+    $data = array(
+        'args'              => $args,
+        'max_num_pages'		=> $query->max_num_pages,
+        'total'				=> $query->found_posts,
+        'posts_per_page'	=> 10,
+        'current_page'		=> $current_page
+    );
+    
+    $data['promos'] = [];
+    
+    if($query->have_posts()) {
+    
+        $count = 0;
+
+        while($query->have_posts()) { 
+            $query->the_post(); 
+    
+            // Get article classes
+            $allClasses = get_post_class();
+            $article_class = '';
+    
+            foreach ($allClasses as $class) { 
+                $article_class .= $class . " "; 
+            }
+            
+            if($count % 2){
+                $article_class .= 'even';
+            };
+            
+            // Get article id
+            $article_id = 'post-' . get_the_ID();
+            
+            // Get thumb url
+            $thumb_url = '';
+            $thumb_alt = '';
+            if(has_post_thumbnail()) {
+                $thumb_id = get_post_thumbnail_id(); 
+                $thumb_src = wp_get_attachment_image_src($thumb_id,'featured-image-preview', true); 
+                
+                $alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true); 
+                $thumb_alt = ( strlen($alt) > 0 ) ? $alt : get_the_title();
+                
+                $thumb_url = $thumb_src[0];
+            } else {
+                $thumb_id = get_stylesheet_directory_uri() . '/images/default-bg.jpg'; 
+                $thumb_url = $thumb_id;
+            }
+            
+            $excerpt = '';
+            if(!has_excerpt()) {
+                $excerpt = get_the_excerpt();
+            } else {
+                $excerpt = '<p>' . get_the_excerpt() . '</p>';
+            }
+
+            $data['promos'][] = array(
+                'article_classes'   => $article_class,
+                'article_id'        => $article_id,
+                'thumb_url'         => $thumb_url,
+                'thumb_alt'         => $thumb_alt,
+                'promo_name'        => get_the_title(),
+                'promo_link'        => get_the_permalink(),
+                'promo_excerpt'     => $excerpt
             );
             
             $count++;

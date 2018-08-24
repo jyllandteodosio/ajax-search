@@ -1,4 +1,4 @@
-<div class="section-query layout-thumb query-dine">
+<div class="section-query layout-thumb query-dine query-outlet">
     
     <div class="wrap">
             <div class="section-filter filter-dine">

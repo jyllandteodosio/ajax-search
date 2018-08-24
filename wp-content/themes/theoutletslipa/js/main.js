@@ -48,6 +48,40 @@ jQuery(function($){
 //    $('.wpbc_structure_form').append('<p>Submission of this form does not guarantee your booking. Please wait for notification via email or mobile for confirmation.</p>');
     
     
+    $('.fieldlights1 select').attr('disabled', 'disabled');
+//    $(".time-select select").on('change', function() {
+//        if ($('.fieldlights1 select:contains("PM")')){
+//            console.log('remove disable');
+//        } else {
+//            $('.fieldlights1 select').attr('disabled', 'disabled');
+//        }
+//    });
+    
+    
+    $('.time-select select').change(function (e) {
+
+        
+//        if ( $('.starttime1 select').find(":selected").text().toLowerCase().indexOf('pm') >= 0 || $('.endtime1 select').find(":selected").text().toLowerCase().indexOf('pm') >= 0 || $('.endtime1 select').find(":selected").text().toLowerCase().indexOf('mn') >= 0) {
+//            $('.fieldlights1 select').prop('disabled', false);
+//        }
+        
+        
+        if($('.starttime1 select option:selected').text() == '06:00 PM' 
+          || $('.starttime1 select option:selected').text() == '08:00 PM' 
+           || $('.starttime1 select option:selected').text() == '10:00 PM'
+          || $('.starttime1 select option:selected').text() == '12:00 MN'
+          || $('.endtime1 select option:selected').text() == '06:00 PM' 
+          || $('.endtime1 select option:selected').text() == '08:00 PM' 
+           || $('.endtime1 select option:selected').text() == '10:00 PM'
+          || $('.endtime1 select option:selected').text() == '12:00 MN') {
+            $('.fieldlights1 select').prop('disabled', false);
+        } else {
+            $('.fieldlights1 select').prop('disabled', true);
+        }
+        
+        
+    });
+    
     $('.layout-change').on('click', function(){
         if($(this).hasClass('style-list')) {
             $(this).parents('.section-query').removeClass('layout-thumb').addClass('layout-list');
@@ -75,5 +109,7 @@ jQuery(function($){
             scrollTop: $(".section-featured-pages").offset().top - 80
         }, 1000);
     });
+    
+    
     
 });

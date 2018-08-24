@@ -11,14 +11,12 @@
                 <?php while( have_rows('pitch_slider') ): the_row(); ?>
 
                     <div class="swiper-slide">
-                        <img src="<?php echo get_sub_field('image')['url'];?>">
+                       <?php echo get_sub_field('image'); ?>
                     </div>
 
                 <?php endwhile; ?>
                 </div>
             <?php endif; ?>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
         </div>
     </div>
     
